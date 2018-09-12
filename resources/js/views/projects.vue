@@ -3,7 +3,7 @@
         <h1>
             Hello, world!
         </h1>
-        <div v-for="project in projects">
+        <div v-for="project in projects" :key="project.id">
             {{ project.name }}
         </div>
     </div>
@@ -22,7 +22,8 @@ export default {
     },
 
     mounted: async function () {
-        const response = await axios.get('/api/projects')
+        const response = await axios.get('/projects')
+        console.log(response.data)
         this.projects = { ...response.data }
     }
 
