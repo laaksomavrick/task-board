@@ -16,7 +16,7 @@ class ReadProjectsTest extends TestCase
     {
         $this->signIn();
         create('App\Project', ['user_id' => auth()->id()]);
-        $projects = $this->get('/api/projects')->json();
+        $projects = $this->get('/projects')->json();
         $this->assertTrue(count($projects) == 1);
     }
 
@@ -28,7 +28,7 @@ class ReadProjectsTest extends TestCase
         $this->signIn();
         $myProject = create('App\Project', ['user_id' => auth()->id()]);
         $notMyProject = create('App\Project');
-        $projects = $this->get('/api/projects')->json();
+        $projects = $this->get('/projects')->json();
         $this->assertTrue(count($projects) == 1);
     }
 
@@ -38,6 +38,6 @@ class ReadProjectsTest extends TestCase
     public function a_guest_cannot_view_projects()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        $projects = $this->get('/api/projects')->json();
+        $projects = $this->get('/projects')->json();
     }
 }
