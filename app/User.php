@@ -28,8 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function projects()
+    public function teams()
     {
-        return $this->hasMany(Project::class);
+        return $this->belongsToMany(Team::class);
     }
 }

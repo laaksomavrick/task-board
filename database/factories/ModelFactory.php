@@ -24,10 +24,16 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\Project::class, function (Faker $faker) {
     return [
-        'user_id' => function () {
-            return factory('App\User')->create()->id;
+        'team_id' => function () {
+            return factory(App\Team::class)->create()->id;
         },
         'name' => $faker->word,
         'description' => $faker->sentence
+    ];
+});
+
+$factory->define(App\Team::class, function (Faker $faker) {
+    return [
+        'name' => $faker->company
     ];
 });
