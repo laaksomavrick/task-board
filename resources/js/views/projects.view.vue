@@ -10,7 +10,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import Card from '../components/card.component';
 
 export default {
@@ -19,15 +19,12 @@ export default {
         Card
     },
 
-    computed: {
-        projects: function () {
-            const team = this.getSelectedTeam;
+    computed: mapState({
+        projects: function (state) {
+            const team = state.teams.selectedTeam;
             return team && team.projects ? team.projects : [];
         },
-        ...mapGetters([
-            'getSelectedTeam'
-        ])
-    }
+    })
 
 }
 </script>
