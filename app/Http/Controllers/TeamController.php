@@ -15,9 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        // TODO return a list of all teams
-        $teamId = User::find(\Auth::id())->teams->first()->id;
-        return Team::find($teamId)->with('projects')->first();
+        return User::find(auth()->id())->teams()->with('projects')->get();
     }
 
     /**
