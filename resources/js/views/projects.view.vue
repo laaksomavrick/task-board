@@ -1,13 +1,10 @@
 <template>
-    <div>
-
-        <div class="flex">
-            <template v-for="project in projects">
-                <card class="flex-1 px-2 py-2 m-2" :key="project.id">
-                    {{ project.name }}
-                </card>
-            </template>
-        </div>
+    <div class="projects">
+        <template v-for="project in projects">
+            <card class="project-card p-4 m-2 w-auto h-48" :key="project.id">
+                <div class="title text-2xl font-semibold">{{ project.name }}</div>
+            </card>
+        </template>
     </div>
 </template>
 
@@ -37,6 +34,20 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1.5rem;
+}
+.project-card {
+  min-width: 150px;
+  flex: 1;
   display: flex;
+  flex-direction: column;
+}
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 </style>
