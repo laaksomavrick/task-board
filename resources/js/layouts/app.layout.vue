@@ -18,3 +18,11 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+@import "~@/app.scss";
+body {
+  background: $background;
+  color: $text-color;
+}
+</style>
