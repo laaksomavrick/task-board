@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
                 $team->users()->attach(factory(App\User::class)->create());
             }
             foreach (range(1, 5) as $i) {
-                $team->projects()->save(factory(App\Project::class)->create(['team_id' => $team->id]));
+                $project = $team->projects()->save(factory(App\Project::class)->create(['team_id' => $team->id]));
+                foreach (range(1, 5) as $i) {
+                    $project->issues()->save(factory(App\Issue::class)->create(['project_id' => $project->id, 'user_id' => $team->users()->inRandomOrder()->first()->id]));
+                }
             }
         });
     }

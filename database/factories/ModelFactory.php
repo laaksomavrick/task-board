@@ -37,3 +37,17 @@ $factory->define(App\Team::class, function (Faker $faker) {
         'name' => $faker->company
     ];
 });
+
+$factory->define(App\Issue::class, function (Faker $faker) {
+    return [
+        'user_id' => function () {
+            return factory(App\User::class)->create()->id;
+        },
+        'project_id' => function () {
+            return factory(App\Project::class)->create()->id;
+        },
+        'name' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'status' => 'todo'
+    ];
+});
