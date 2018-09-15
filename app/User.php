@@ -28,8 +28,18 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::created(function ($model) {
+            $team = factory('App\Team')->create();
+            $team->users()->attach($model);
+        });
+    }
+
     public function teams()
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany('App\Team');
     }
 }

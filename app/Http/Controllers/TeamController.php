@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use App\User;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -14,7 +15,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        // TODO return a list of all teams
+        $teamId = User::find(\Auth::id())->teams->first()->id;
+        return Team::find($teamId)->with('projects')->first();
     }
 
     /**

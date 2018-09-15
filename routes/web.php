@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::get('teams', 'TeamController@index');
     Route::get('teams/{team}/projects', 'ProjectController@index');
 });
 

@@ -1,4 +1,5 @@
 export const startup = async ({ dispatch }) => {
-    const project = dispatch("fetchProjects");
-    await Promise.all([project]);
+    // fetch team, will eager load projects
+    const teams = dispatch("fetchTeams");
+    await Promise.all([teams]);
 };

@@ -17,10 +17,13 @@ export default {
 
     computed: {
         projects: function () {
-            return this.getProjects
+            // todo users will have more than one team
+            const team = this.getTeams;
+            console.log(team)
+            return team && team.projects ? team.projects : [];
         },
         ...mapGetters([
-            'getProjects'
+            'getTeams'
         ])
     }
 
