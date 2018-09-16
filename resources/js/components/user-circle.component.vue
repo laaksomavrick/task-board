@@ -22,16 +22,16 @@ export default {
   align-items: center;
   color: $text-color;
   border: 2px solid $text-color;
-  width: 35px;
-  height: 35px;
+  width: 37.5px;
+  height: 37.5px;
   background: white;
-  cursor: pointer;
+  // cursor: pointer;
 }
 .user-circle:not(:first-child) {
-  margin-left: -5px;
+  margin-left: -7.5px;
 }
 .user-initial {
   margin-top: 2px;
-  user-select: none;
+  // user-select: none;
 }
 </style>

@@ -11,8 +11,13 @@
                     <team-issue header="Done" :count="teamDoneCount"></team-issue>
                 </div>
                 <div class="team-members">
-                    <user-circle v-for="member in visibleTeamMembers" :key="member.user_id" :text="member.initials"></user-circle>
-                    <user-circle v-if="excessMembers" :text="excessMembersCount"></user-circle>
+                    <div class="text-base mb-1">
+                        Members
+                    </div>
+                    <div class="team-member-circles">
+                        <user-circle v-for="member in visibleTeamMembers" :key="member.user_id" :text="member.initials"></user-circle>
+                        <user-circle v-if="excessMembers" :text="excessMembersCount"></user-circle>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,7 +88,11 @@ export default {
   display: flex;
 }
 .team-members {
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
+}
+.team-member-circles {
   display: flex;
   align-items: center;
 }

@@ -26,4 +26,14 @@ class ReadTeamTest extends TestCase
         $this->assertEquals(4, $team[0]['in_progress_issues_count']);
         $this->assertEquals(5, $team[0]['done_issues_count']);
     }
+
+    /**
+     * @test
+     */
+    public function a_team_has_many_users()
+    {
+        $this->signIn();
+        $teams = $this->get("/teams")->json();
+        $this->assertArrayHasKey('users', $teams[0]);
+    }
 }
