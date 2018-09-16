@@ -15,7 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return User::find(auth()->id())->teams()->with('projects')->get();
+        return User::find(auth()->id())->teams()->with('projects')->with('users')->get();
     }
 
     /**

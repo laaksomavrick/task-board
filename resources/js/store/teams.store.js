@@ -15,7 +15,10 @@ const actions = {
         const response = await http.index();
         const json = response.data;
         commit("setTeams", json);
-        commit("setSelectedTeam", json[0]); // todo
+        const selected = json.sort(
+            (a, b) => b.projects.length - a.projects.length
+        )[0]; // todo
+        commit("setSelectedTeam", selected); // todo
     }
 };
 

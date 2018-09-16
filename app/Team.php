@@ -23,6 +23,7 @@ class Team extends Model
         static::addGlobalScope('doneCount', function (Builder $builder) {
             return $builder->withCount('doneIssues');
         });
+
     }
 
     public function users()
