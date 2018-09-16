@@ -18,6 +18,7 @@ const actions = {
         const selected = json.sort(
             (a, b) => b.projects.length - a.projects.length
         )[0]; // todo
+        console.log(selected);
         commit("setSelectedTeam", selected); // todo
     }
 };
