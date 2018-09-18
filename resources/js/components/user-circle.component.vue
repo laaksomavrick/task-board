@@ -1,5 +1,5 @@
 <template>
-    <div class="user-circle p-1 rounded-full">
+    <div class="user-circle p-1 rounded-full shadow">
         <div class="user-initial">
             {{ text }}
         </div>
@@ -20,11 +20,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $text-color;
-  border: 2px solid $text-color;
+  color: white;
+  border: 2px solid white;
   width: 37.5px;
   height: 37.5px;
-  background: white;
+  background: $text-color;
   // cursor: pointer;
 }
 .user-circle:not(:first-child) {

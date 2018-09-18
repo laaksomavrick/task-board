@@ -3,39 +3,27 @@ import ApiService from "../services/api.service";
 // todo: builder class that generates CRUD actions for vuex
 // needs to be extensible
 
-const http = new ApiService("teams");
+const http = new ApiService("team");
 
 const state = {
-    teams: [],
-    selectedTeam: {}
+    activeTeam: {}
 };
 
 const actions = {
-    fetchTeams: async ({ commit }) => {
+    fetchTeam: async ({ commit }) => {
         const response = await http.index();
         const json = response.data;
-        commit("setTeams", json);
-        const selected = json.sort(
-            (a, b) => b.projects.length - a.projects.length
-        )[0]; // todo
-        console.log(selected);
-        commit("setSelectedTeam", selected); // todo
+        commit("setTeam", json);
     }
 };
 
 const mutations = {
-    setTeams(state, teams) {
-        state.teams = teams;
-    },
-    setSelectedTeam(state, team) {
-        state.selectedTeam = team;
+    setTeam(state, team) {
+        state.activeTeam = team;
     }
 };
 
-const getters = {
-    getTeams: state => state.teams,
-    getSelectedTeam: state => state.selectedTeam
-};
+const getters = {};
 
 export default {
     state,

@@ -22,19 +22,9 @@ class User extends Authenticatable
         'initials'
     ];
 
-    protected static function boot()
+    public function team()
     {
-        parent::boot();
-
-        self::created(function ($model) {
-            $team = factory('App\Team')->create();
-            $team->users()->attach($model);
-        });
-    }
-
-    public function teams()
-    {
-        return $this->belongsToMany('App\Team');
+        return $this->belongsTo('App\Team');
     }
 
     public function issues()

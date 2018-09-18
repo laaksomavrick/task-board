@@ -15,6 +15,6 @@ class CreateUserTest extends TestCase
     public function a_new_user_should_belong_to_a_team()
     {
         $user = create('App\User');
-        $this->assertInstanceOf('App\Team', $user->teams->first());
+        $this->assertInstanceOf('App\Team', $user->team->first());
     }
 }

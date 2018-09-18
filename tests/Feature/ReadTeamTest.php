@@ -12,28 +12,30 @@ class ReadTeamTest extends TestCase
     /**
      * @test
      */
-    public function a_team_has_many_issue_status_counts()
+    public function a_team_has_many_users()
     {
         $this->signIn();
-        $teamId = $this->user->teams->first()->id;
-        $project = create('App\Project', ['team_id' => $teamId]);
-        $todoIssues = create('App\Issue', ['project_id' => $project->id, 'status' => 'todo'], 3);
-        $inProgressIssues = create('App\Issue', ['project_id' => $project->id, 'status' => 'inprogress'], 4);
-        $doneIssues = create('App\Issue', ['project_id' => $project->id, 'status' => 'done'], 5);
-
-        $team = $this->get("/teams")->json();
-        $this->assertEquals(3, $team[0]['todo_issues_count']);
-        $this->assertEquals(4, $team[0]['in_progress_issues_count']);
-        $this->assertEquals(5, $team[0]['done_issues_count']);
+        $team = $this->get("/team")->json();
+        $this->assertArrayHasKey('users', $team);
     }
 
     /**
      * @test
      */
-    public function a_team_has_many_users()
+    public function a_team_has_many_projects()
     {
         $this->signIn();
-        $teams = $this->get("/teams")->json();
-        $this->assertArrayHasKey('users', $teams[0]);
+        $team = $this->get("/team")->json();
+        $this->assertArrayHasKey('projects', $team);
+    }
+
+    /**
+     * @test
+     */
+    public function a_guest_cannot_view_a_team()
+    {
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+        $team = create('App\Team');
+        $team = $this->get("/team")->json();
     }
 }

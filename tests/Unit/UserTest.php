@@ -28,10 +28,9 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function a_user_has_many_teams()
+    public function a_user_has_a_team()
     {
-        $this->user->teams()->attach(create('App\Team', [], 3));
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->user->teams);
+        $this->assertInstanceOf('App\Team', $this->user->team);
     }
 
 }

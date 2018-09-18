@@ -1,9 +1,12 @@
 <template>
-    <div class="w-screen h-auto bg-white shadow ">
+    <div class="w-screen h-auto bg-white shadow">
         <div class="team-container container mx-auto p-4">
             <h1>
                 {{ teamName }}
             </h1>
+            <div class="mt-1">
+                {{ teamDescription }}
+            </div>
             <div class="team-details mt-4">
                 <div class="team-issues">
                     <team-issue class="left-aligned" header="Backlog" :count="teamTodoCount"></team-issue>
@@ -43,25 +46,26 @@ export default {
     },
 
     computed: mapState({
+        team: function (state) {
+            return state.teams.selectedTeam;
+        },
         teamName: function (state) {
-            const team = state.teams.selectedTeam;
-            return team ? team.name : '';
+            return this.team ? this.team.name : '';
+        },
+        teamDescription: function (state) {
+            return this.team ? this.team.description : '';
         },
         teamTodoCount: function (state) {
-            const team = state.teams.selectedTeam;
-            return team ? team.todo_issues_count : 0;
+            return this.team ? this.team.todo_issues_count : 0;
         },
         teamInProgressCount: function (state) {
-            const team = state.teams.selectedTeam;
-            return team ? team.in_progress_issues_count : 0;
+            return this.team ? this.team.in_progress_issues_count : 0;
         },
         teamDoneCount: function (state) {
-            const team = state.teams.selectedTeam;
-            return team ? team.done_issues_count : 0;
+            return this.team ? this.team.done_issues_count : 0;
         },
         visibleTeamMembers: function (state) {
-            const team = state.teams.selectedTeam;
-            return team && team.users ? team.users.slice(0, this.visibleMembers) : [];
+            return this.team && this.team.users ? this.team.users.slice(0, this.visibleMembers) : [];
         },
         excessMembers: function (state) {
             return this.visibleTeamMembers.length > this.visibleMembers - 1;

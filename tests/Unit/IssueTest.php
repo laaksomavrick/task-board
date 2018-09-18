@@ -28,6 +28,14 @@ class IssueTest extends TestCase
     /**
      * @test
      */
+    public function an_issue_has_an_assignee()
+    {
+        $this->assertInstanceOf('App\User', $this->issue->assignee);
+    }
+
+    /**
+     * @test
+     */
     public function an_issue_has_a_project()
     {
         $this->assertInstanceOf('App\Project', $this->issue->project);

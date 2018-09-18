@@ -1,6 +1,5 @@
 <template>
     <div class="h-full flex flex-col">
-        <team-header></team-header>
         <div class="router-container container mx-auto p-4 flex-1">
             <router-view />
         </div>

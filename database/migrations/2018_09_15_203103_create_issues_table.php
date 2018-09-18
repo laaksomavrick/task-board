@@ -15,11 +15,11 @@ class CreateIssuesTable extends Migration
     {
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->index(); // the owner id
-            $table->unsignedInteger('project_id')->index(); // the project id
+            $table->unsignedInteger('owner_user_id')->index();
+            $table->unsignedInteger('assignee_user_id')->index();
+            $table->unsignedInteger('project_id')->index();
             $table->string('name');
             $table->text('description');
-            $table->enum('status', ['todo', 'inprogress', 'done']);
             $table->timestamps();
         });
     }

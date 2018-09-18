@@ -21,7 +21,8 @@ export default {
 
     computed: mapState({
         projects: function (state) {
-            const team = state.teams.selectedTeam;
+            console.log(state)
+            const team = state.team.activeTeam;
             return team && team.projects ? team.projects : [];
         },
     })

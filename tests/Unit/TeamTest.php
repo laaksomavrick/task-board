@@ -30,7 +30,7 @@ class TeamTest extends TestCase
      */
     public function a_team_has_many_users()
     {
-        $this->team->users()->attach(create('App\User', [], 3));
+        create('App\User', ['team_id' => $this->team->id], 3);
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->team->users);
     }
 

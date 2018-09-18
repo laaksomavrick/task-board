@@ -14,7 +14,7 @@ class Project extends Model
 
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo('App\Team');
     }
 
     public function issues()

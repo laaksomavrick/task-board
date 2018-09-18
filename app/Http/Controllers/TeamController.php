@@ -15,7 +15,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return User::find(auth()->id())->teams()->with('projects')->with('users')->get();
+        //
     }
 
     /**
@@ -45,9 +45,10 @@ class TeamController extends Controller
      * @param  \App\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show()
     {
-        //
+        $user = User::find(auth()->id());
+        return $user->team()->with('projects')->with('users')->first();
     }
 
     /**
