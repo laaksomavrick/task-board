@@ -1,6 +1,7 @@
 <template>
     <div class="h-full flex flex-col">
-        <div class="router-container container mx-auto p-4 flex-1">
+        <navbar></navbar>
+        <div class="router-container container mx-auto py-4 flex-1">
             <router-view />
         </div>
     </div>
@@ -8,12 +9,12 @@
 
 <script>
 import { mapActions } from 'vuex'
-import TeamHeader from '../components/team-header.component';
+import Navbar from '../components/navbar.component';
 
 export default {
 
     components: {
-        TeamHeader
+        Navbar
     },
 
     mounted: async function () {
