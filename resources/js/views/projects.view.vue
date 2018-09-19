@@ -7,6 +7,7 @@
                     <div class="title text-2xl font-semibold">{{ project.name }}</div>
                 </card>
             </template>
+            <create-project />
         </div>
     </div>
 </template>
@@ -15,11 +16,13 @@
 
 import { mapState } from 'vuex'
 import Card from '../components/card.component';
+import CreateProject from '../components/create-project.component';
 
 export default {
 
     components: {
-        Card
+        Card,
+        CreateProject
     },
 
     computed: mapState({
