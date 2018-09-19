@@ -29,9 +29,12 @@ class Project extends Model
                 'owner_user_id',
                 'assignee_user_id'
             ])
-                ->unique()
                 ->toArray()
-        )->flatten()->all();
+        )
+            ->flatten()
+            ->unique()
+            ->values()
+            ->all();
         return User::whereIn('id', $ids)->get();
     }
 

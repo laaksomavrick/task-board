@@ -20,14 +20,19 @@ class DatabaseSeeder extends Seeder
             // each team will have 5 projects
             $projects = factory('App\Project', 5)->create([
                 'team_id' => $team->id
-            ]);
+            ])->each(function ($project) use ($team) {
 
-            // each team will have 15 issues
-            $issues = factory('App\Issue', 15)->create([
-                'owner_user_id' => $team->users()->inRandomOrder()->first()->id,
-                'assignee_user_id' => $team->users()->inRandomOrder()->first()->id,
-                'project_id' => $team->projects()->inRandomOrder()->first()->id
-            ]);
+                // each project will have 2 issues
+                // foreach for rand
+                foreach (range(0, 1) as $i) {
+                    $issues = factory('App\Issue')->create([
+                        'owner_user_id' => $team->users()->inRandomOrder()->first()->id,
+                        'assignee_user_id' => $team->users()->inRandomOrder()->first()->id,
+                        'project_id' => $project->id
+                    ]);
+                }
+            });
+
         });
     }
 }
