@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Project extends Model
 {
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
+    protected $appends = [
+        'users'
+    ];
 
     public function team()
     {
@@ -21,4 +21,18 @@ class Project extends Model
     {
         return $this->hasMany('App\Issue');
     }
+
+    public function getUsersAttribute()
+    {
+        $ids = collect(
+            $this->issues()->get([
+                'owner_user_id',
+                'assignee_user_id'
+            ])
+                ->unique()
+                ->toArray()
+        )->flatten()->all();
+        return User::whereIn('id', $ids)->get();
+    }
+
 }

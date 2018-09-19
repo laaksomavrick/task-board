@@ -48,7 +48,7 @@ class TeamController extends Controller
     public function show()
     {
         $user = User::find(auth()->id());
-        return $user->team()->with('projects')->with('users')->first();
+        return $user->team()->with('projects')->first();
     }
 
     /**

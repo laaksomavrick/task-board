@@ -16,3 +16,8 @@ $max-width: $lg;
 .text-shadow {
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.left-aligned {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}

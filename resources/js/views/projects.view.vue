@@ -4,7 +4,12 @@
         <div class="projects">
             <template v-for="project in projects">
                 <card class="project-card p-4 m-2 w-auto h-48" :key="project.id">
-                    <div class="title text-2xl font-semibold">{{ project.name }}</div>
+                    <div class="project-title text-2xl font-semibold">
+                        {{ project.name }}
+                    </div>
+                    <div class="project-member-circles">
+                        <user-circle v-for="member in project.users" :key="member.user_id" :text="member.initials"></user-circle>
+                    </div>
                 </card>
             </template>
             <create-project />
@@ -17,12 +22,14 @@
 import { mapState } from 'vuex'
 import Card from '../components/card.component';
 import CreateProject from '../components/create-project.component';
+import UserCircle from '../components/user-circle.component';
 
 export default {
 
     components: {
         Card,
-        CreateProject
+        CreateProject,
+        UserCircle
     },
 
     computed: mapState({
@@ -65,10 +72,15 @@ export default {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
 }
-.title {
+.project-title {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.project-member-circles {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
 }
 </style>
