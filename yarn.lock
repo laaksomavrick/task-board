@@ -6083,6 +6083,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-awesome@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/vue-awesome/-/vue-awesome-3.1.2.tgz#50bba8c83e51fd813b1a703d02dc77d96d18c706"
+
 vue-hot-reload-api@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
