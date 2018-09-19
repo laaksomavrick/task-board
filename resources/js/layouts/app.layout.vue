@@ -1,7 +1,7 @@
 <template>
     <div class="h-full flex flex-col">
         <navbar></navbar>
-        <div class="router-container container mx-auto py-4 flex-1">
+        <div class="router-container container mx-auto flex-1">
             <router-view />
         </div>
     </div>
