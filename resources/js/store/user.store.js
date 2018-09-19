@@ -1,20 +1,20 @@
 import axios from "../http";
 
 const state = {
-    team: {}
+    user: {}
 };
 
 const actions = {
-    fetchTeam: async ({ commit }) => {
-        const response = await axios.get("/team/default");
+    fetchUser: async ({ commit }) => {
+        const response = await axios.get("/user/default");
         const json = response.data;
-        commit("setTeam", json);
+        commit("setUser", json);
     }
 };
 
 const mutations = {
-    setTeam(state, team) {
-        state.team = team;
+    setUser(state, user) {
+        state.user = user;
     }
 };
 
