@@ -12,20 +12,10 @@ class ReadTeamTest extends TestCase
     /**
      * @test
      */
-    public function a_team_has_many_users()
-    {
-        $this->signIn();
-        $team = $this->get("/team")->json();
-        $this->assertArrayHasKey('users', $team);
-    }
-
-    /**
-     * @test
-     */
     public function a_team_has_many_projects()
     {
         $this->signIn();
-        $team = $this->get("/team")->json();
+        $team = $this->get("/team/default")->json();
         $this->assertArrayHasKey('projects', $team);
     }
 

@@ -33,4 +33,15 @@ class ProjectTest extends TestCase
     {
         $this->assertInstanceOf('App\Team', $this->project->team);
     }
+
+    /**
+     * @test
+     */
+    public function a_project_has_all_the_users_involved_in_its_issues()
+    {
+        $issues = create('App\Issue', ['project_id' => $this->project->id], 5);
+        $users = $this->project->getUsersAttribute();
+        // 5 assignees, 5 owners
+        $this->assertEquals(10, count($users));
+    }
 }
