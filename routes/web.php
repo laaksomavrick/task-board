@@ -14,8 +14,9 @@
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-    Route::get('team/default', 'TeamController@show');
-    Route::get('user/default', 'UserController@show');
+    Route::get('teams/default', 'TeamsController@show');
+    Route::get('users/default', 'UsersController@show');
+    Route::post('projects', 'ProjectsController@store');
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

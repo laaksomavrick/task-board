@@ -6,7 +6,7 @@ use App\Team;
 use App\User;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class TeamsController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -3,6 +3,7 @@ import Vue from "vue";
 import { startup } from "./actions.store";
 import team from "./teams.store";
 import user from "./user.store";
+import ui from "./ui.store";
 
 Vue.use(Vuex);
 
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
     mutations: {
         ...team.mutations,
         ...user.mutations
+    },
+    modules: {
+        ui
     }
 });
 

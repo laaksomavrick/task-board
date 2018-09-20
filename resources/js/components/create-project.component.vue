@@ -1,14 +1,20 @@
 <template>
-    <div class="create-project p-4 m-2 w-auto h-48 rounded-lg border border-grey border-dashed">
+    <div @click="toggleCreateProjectModal" class="create-project p-4 m-2 w-auto h-48 rounded-lg border border-grey border-dashed">
         <icon name="plus-circle" :scale="2.5" />
     </div>
 </template>
 
 <script>
 import Icon from 'vue-awesome/components/Icon'
+import { mapActions } from 'vuex'
 export default {
     components: {
         Icon
+    },
+    methods: {
+        ...mapActions([
+            'toggleCreateProjectModal'
+        ])
     }
 }
 </script>

@@ -4,17 +4,20 @@
         <div class="router-container container mx-auto flex-1">
             <router-view />
         </div>
+        <create-project-modal />
     </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import Navbar from '../components/navbar.component';
+import CreateProjectModal from '../components/create-project-modal.component';
 
 export default {
 
     components: {
-        Navbar
+        Navbar,
+        CreateProjectModal
     },
 
     mounted: async function () {
