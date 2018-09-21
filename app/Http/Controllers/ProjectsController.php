@@ -15,7 +15,9 @@ class ProjectsController extends Controller
         ]);
 
         return Project::create([
-            'name' => $request['name']
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'team_id' => auth()->user()->team->id
         ]);
     }
 }

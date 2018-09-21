@@ -8,6 +8,12 @@ use App\User;
 class Project extends Model
 {
 
+    protected $fillable = [
+        'name',
+        'team_id',
+        'description'
+    ];
+
     protected $appends = [
         'users'
     ];
