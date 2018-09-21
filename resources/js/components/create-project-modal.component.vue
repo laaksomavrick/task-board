@@ -4,6 +4,10 @@
             Project
         </label>
         <input v-model="name" class="appearance-none border rounded w-full py-2 px-3" type="text" placeholder="Name">
+        <label>
+            Description
+        </label>
+        <input v-model="description" class="appearance-none border rounded w-full py-2 px-3" type="text" placeholder="Name">
         <button @click="save" class="border p-2">Save</button>
     </modal>
 </template>
@@ -13,17 +17,17 @@ import { mapState, mapActions } from 'vuex'
 import Modal from './modal.component';
 
 // todos
-// validation
 // styling / polish
+// err handling
 // additional functionality on projects (color picker?)
-// yolo
 export default {
     components: {
         Modal
     },
     data () {
         return {
-            name: ''
+            name: '',
+            description: ''
         }
     },
     computed: mapState({
@@ -33,11 +37,18 @@ export default {
     }),
     methods: {
         ...mapActions([
-            'toggleCreateProjectModal'
+            'toggleCreateProjectModal',
+            'createProject'
         ]),
 
-        save () {
-            console.log(this.name)
+        async save () {
+            try {
+                const payload = { name: this.name, description: this.description }
+                await this.createProject(payload);
+                this.toggleCreateProjectModal();
+            } catch (e) {
+                console.error(e);
+            }
         }
     }
 }

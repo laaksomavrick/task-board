@@ -15,6 +15,9 @@ const actions = {
 const mutations = {
     setTeam(state, team) {
         state.team = team;
+    },
+    addProject(state, project) {
+        state.team.projects = [...state.team.projects, project];
     }
 };
 
