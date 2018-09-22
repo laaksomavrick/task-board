@@ -1,6 +1,6 @@
 <template>
-    <div class="navbar w-screen p-4">
-        <user-circle class="member-circle" :text="user.initials" />
+    <div class="navbar-container container mx-auto flex-1 py-4">
+        <user-circle class="member-circle mr-2" :text="user.initials" />
     </div>
 </template>
 
@@ -24,9 +24,10 @@ export default {
 }
 </script>
 
-<style>
-.navbar {
-  display: flex;
+<style lang="scss">
+@import "~@/app.scss";
+.navbar-container {
+  max-width: $max-width !important;
 }
 .member-circle {
   margin-left: auto;
