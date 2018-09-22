@@ -1,7 +1,18 @@
-# TODOS
+### Task Board
 
--   basic SPA scaffold served from laravel
--   php dev setup (linting, formatting)
--   js dev setup (linting, formatting)
--   pre git commit hook to lint, fmt
--   docker set up
+-   [x] Login/Logout/Registration
+-   [x] Projects dashboard
+-   [ ] Projects CRUD
+-   [ ] Issues view / Kanban Board
+-   [ ] Issues CRUD
+-   [ ] Global search
+-   [ ] Notifications
+-   [ ] Invite users / Emails
+-   [ ] User settings
+-   [ ] Team settings
+-   [ ] Onboarding
+-   [ ] Permissions / User roles
+-   [ ] Dockerize
+-   [ ] Php linting
+-   [ ] Javascript linting
+-   [ ] Theming
