@@ -15,7 +15,7 @@ class ReadTeamTest extends TestCase
     public function a_team_has_many_projects()
     {
         $this->signIn();
-        $team = $this->get("/teams/default")->json();
+        $team = $this->get("api/teams/default")->json();
         $this->assertArrayHasKey('projects', $team);
     }
 
@@ -26,6 +26,6 @@ class ReadTeamTest extends TestCase
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
         $team = create('App\Team');
-        $team = $this->get("teams/default")->json();
+        $team = $this->get("api/teams/default")->json();
     }
 }

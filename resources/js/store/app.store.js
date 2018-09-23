@@ -11,7 +11,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         ...team.state,
-        ...user.state
+        ...user.state,
+        ...project.state
     },
     actions: {
         startup,

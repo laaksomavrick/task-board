@@ -6,7 +6,7 @@ const state = {
 
 const actions = {
     fetchTeam: async ({ commit }) => {
-        const response = await axios.get("/teams/default");
+        const response = await axios.get("/api/teams/default");
         const json = response.data;
         commit("setTeam", json);
     }

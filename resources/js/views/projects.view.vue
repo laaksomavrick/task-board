@@ -3,7 +3,7 @@
         <h1 class="m-2">Projects</h1>
         <div class="projects">
             <template v-for="project in projects">
-                <card class="project-card p-4 m-2 w-auto h-48" :key="project.id">
+                <card class="project-card p-4 m-2 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)">
                     <div class="project-title text-2xl font-semibold">
                         {{ project.name }}
                     </div>
@@ -30,6 +30,13 @@ export default {
         Card,
         CreateProject,
         UserCircle
+    },
+
+    methods: {
+        handleProjectClick (project) {
+            const { id } = project;
+            this.$router.push({ name: 'kanban', params: { id } });
+        }
     },
 
     computed: mapState({

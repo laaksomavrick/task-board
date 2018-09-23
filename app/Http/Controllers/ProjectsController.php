@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class ProjectsController extends Controller
 {
 
+    public function show(Project $project)
+    {
+        return $project->load('issues');
+    }
+
     public function store(Request $request)
     {
         $request->validate([

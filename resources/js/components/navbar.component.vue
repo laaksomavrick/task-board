@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar-container container mx-auto flex-1 py-4">
+    <div class="navbar-container container mx-auto py-4">
         <user-circle class="member-circle mr-2" :text="user.initials" />
     </div>
 </template>

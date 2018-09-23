@@ -6,7 +6,7 @@ const state = {
 
 const actions = {
     fetchUser: async ({ commit }) => {
-        const response = await axios.get("/users/default");
+        const response = await axios.get("/api/users/default");
         const json = response.data;
         commit("setUser", json);
     }
