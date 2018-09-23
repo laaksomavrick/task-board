@@ -38,6 +38,9 @@ body {
   background: $background;
   color: $text-color;
   height: 100vh;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  overflow-y: overlay;
 }
 #app {
   height: 100%;
