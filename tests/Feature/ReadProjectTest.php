@@ -23,12 +23,16 @@ class ReadProjectTest extends TestCase
     /**
      * @test
      */
-    public function a_project_has_issues()
+    public function a_project_has_categories_with_issues()
     {
         $this->signIn();
-        create('App\Project');
+        $project = create('App\Project');
+        $category = create('App\ProjectCategory', ['project_id' => $project->id]);
+        $issue = create('App\Issue', ['project_category_id' => $category->id]);
         $project = $this->get("api/projects/1")->json();
-        $this->assertArrayHasKey("issues", $project);
+        $this->assertArrayHasKey('categories', $project);
+        $this->assertArrayHasKey('issues', $project['categories'][0]);
+        $this->assertEquals(1, count($project['categories'][0]['issues']));
     }
 
     /**

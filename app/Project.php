@@ -28,6 +28,11 @@ class Project extends Model
         return $this->hasMany('App\Issue');
     }
 
+    public function categories()
+    {
+        return $this->hasMany('App\ProjectCategory');
+    }
+
     public function getUsersAttribute()
     {
         $ids = collect(

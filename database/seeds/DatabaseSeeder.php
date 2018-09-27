@@ -22,15 +22,25 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ])->each(function ($project) use ($team) {
 
-                // each project will have 2 issues
-                // foreach for rand
-                foreach (range(0, 1) as $i) {
-                    $issues = factory('App\Issue')->create([
-                        'owner_user_id' => $team->users()->inRandomOrder()->first()->id,
-                        'assignee_user_id' => $team->users()->inRandomOrder()->first()->id,
-                        'project_id' => $project->id
-                    ]);
-                }
+                // each project will have 3 categories
+
+                $categories = factory('App\ProjectCategory', 3)->create([
+                    'project_id' => $project->id
+                ])->each(function ($category) use ($team, $project) {
+
+                    // each project will have 2 issues
+                    // foreach for rand
+                    foreach (range(0, 1) as $i) {
+                        $issues = factory('App\Issue')->create([
+                            'owner_user_id' => $team->users()->inRandomOrder()->first()->id,
+                            'assignee_user_id' => $team->users()->inRandomOrder()->first()->id,
+                            'project_category_id' => $category->id,
+                            'project_id' => $project->id
+                        ]);
+                    }
+
+                });
+
             });
 
         });

@@ -35,6 +35,15 @@ $factory->define(App\Project::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\ProjectCategory::class, function (Faker $faker) {
+    return [
+        'project_id' => function () {
+            return factory(App\Project::class)->create()->id;
+        },
+        'name' => $faker->word,
+    ];
+});
+
 $factory->define(App\Team::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
@@ -51,6 +60,9 @@ $factory->define(App\Issue::class, function (Faker $faker) {
         },
         'project_id' => function () {
             return factory(App\Project::class)->create()->id;
+        },
+        'project_category_id' => function () {
+            return factory(App\ProjectCategory::class)->create()->id;
         },
         'name' => $faker->sentence,
         'description' => $faker->paragraph

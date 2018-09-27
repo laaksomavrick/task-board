@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIssuesTable extends Migration
+class CreateProjectCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateIssuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('issues', function (Blueprint $table) {
+        Schema::create('project_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('owner_user_id')->index();
-            $table->unsignedInteger('assignee_user_id')->index();
             $table->unsignedInteger('project_id')->index();
-            $table->unsignedInteger('project_category_id')->index();
             $table->string('name');
-            $table->text('description');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateIssuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('issues');
+        Schema::dropIfExists('project_categories');
     }
 }

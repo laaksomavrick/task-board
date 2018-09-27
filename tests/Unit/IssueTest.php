@@ -40,4 +40,12 @@ class IssueTest extends TestCase
     {
         $this->assertInstanceOf('App\Project', $this->issue->project);
     }
+
+    /**
+     * @test
+     */
+    public function an_issue_has_a_project_category()
+    {
+        $this->assertInstanceOf('App\ProjectCategory', $this->issue->projectCategory);
+    }
 }

@@ -10,7 +10,7 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
-        return $project->load('issues');
+        return $project->load('categories.issues');
     }
 
     public function store(Request $request)

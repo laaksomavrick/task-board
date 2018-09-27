@@ -20,4 +20,9 @@ class Issue extends Model
     {
         return $this->belongsTo('App\Project');
     }
+
+    public function projectCategory()
+    {
+        return $this->belongsTo('App\ProjectCategory');
+    }
 }

@@ -37,6 +37,22 @@ class ProjectTest extends TestCase
     /**
      * @test
      */
+    public function a_project_has_many_issues()
+    {
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->project->issues);
+    }
+
+    /**
+     * @test
+     */
+    public function a_project_has_many_categories()
+    {
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->project->categories);
+    }
+
+    /**
+     * @test
+     */
     public function a_project_has_all_the_users_involved_in_its_issues()
     {
         $issues = create('App\Issue', ['project_id' => $this->project->id], 5);
@@ -44,4 +60,5 @@ class ProjectTest extends TestCase
         // 5 assignees, 5 owners
         $this->assertEquals(10, count($users));
     }
+
 }

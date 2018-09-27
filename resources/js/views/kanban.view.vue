@@ -1,6 +1,6 @@
 <template>
     <div>
-        Hello, world! {{ project.issues }}
+        <h1>{{ project.name }}</h1>
     </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
             return params.id;
         },
         project (state) {
+            console.log(state.selectedProject);
             return state.selectedProject;
         }
 
