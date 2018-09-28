@@ -18,6 +18,7 @@ Route::middleware('auth')->prefix('api')->group(function () {
     Route::get('users/default', 'UsersController@show');
     Route::get('projects/{project}', 'ProjectsController@show');
     Route::post('projects', 'ProjectsController@store');
+    Route::patch('categories/{category}/issues/move', 'MoveIssuesController@update');
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

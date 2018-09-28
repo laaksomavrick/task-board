@@ -17,6 +17,11 @@ const actions = {
     },
     clearSelectedProject: ({ commit }) => {
         commit("setSelectedProject", {});
+    },
+    updateProjectCategoryIssues: async ({ commit }, payload) => {
+        commit("setSelectedProjectCategoryIssues", payload)
+        const data = { ids: payload.issues.map(i => i.id) };
+        await axios.patch(`/api/categories/${payload.categoryId}/issues/move`, data);
     }
 };
 

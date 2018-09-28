@@ -35,7 +35,14 @@ export default {
                 return this.$store.getters.categoryIssues(this.id);
             },
             set(value) {
-                this.$store.commit('setSelectedProjectCategoryIssues', {categoryId: this.id, issues: value})
+                // do a dispatch too
+                // for the category changed
+                // i want to update the ordinals of the issues
+                // i want to update the existence of issues (added / removed)
+                // i have catId, issues payload of ids
+                // patch -> categories/{category}/move     MoveIssuesController@update
+                const payload = { categoryId: this.id, issues: value }
+                this.$store.dispatch("updateProjectCategoryIssues", payload)
             }
         }
     }
