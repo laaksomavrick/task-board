@@ -11,10 +11,8 @@ const actions = {
         commit("addProject", json);
     },
     fetchSelectedProject: async ({ commit }, id) => {
-        console.log("here");
         const response = await axios.get(`/api/projects/${id}`);
         const json = response.data;
-        console.log(json);
         commit("setSelectedProject", json);
     },
     clearSelectedProject: ({ commit }) => {
@@ -25,10 +23,24 @@ const actions = {
 const mutations = {
     setSelectedProject(state, project) {
         state.selectedProject = project;
+    },
+    setSelectedProjectCategoryIssues(state, params) {
+        const { categoryId, issues } = params;
+        const category = state.selectedProject.categories.find(cat => cat.id === categoryId);
+        const updatedCategory = {...category, issues};
+        const updatedCategories = state.selectedProject.categories.map(cat => {
+            return cat.id === categoryId ? updatedCategory : cat
+        });
+        const updatedSelectedProject = {...state.selectedProject, categories: updatedCategories};
+        state.selectedProject = updatedSelectedProject;
     }
 };
 
-const getters = {};
+const getters = {
+    categoryIssues: (state) => (categoryId) => {
+        return state.selectedProject.categories.find(cat => cat.id === categoryId).issues;
+    }
+};
 
 export default {
     state,

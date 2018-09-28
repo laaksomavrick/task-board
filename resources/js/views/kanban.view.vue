@@ -15,7 +15,7 @@ import Category from '../components/category.component';
 export default {
 
     components: {
-        Category
+        Category,
     },
 
     async mounted () {
@@ -40,7 +40,6 @@ export default {
             return params.id;
         },
         project (state) {
-            console.log(state.selectedProject);
             return state.selectedProject;
         }
 
