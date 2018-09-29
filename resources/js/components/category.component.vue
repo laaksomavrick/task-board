@@ -27,20 +27,14 @@ export default {
         Draggable
     },
     computed: {
-        id() {
+        id () {
             return this.category ? this.category.id : null;
         },
         issues: {
-            get() {
+            get () {
                 return this.$store.getters.categoryIssues(this.id);
             },
-            set(value) {
-                // do a dispatch too
-                // for the category changed
-                // i want to update the ordinals of the issues
-                // i want to update the existence of issues (added / removed)
-                // i have catId, issues payload of ids
-                // patch -> categories/{category}/move     MoveIssuesController@update
+            set (value) {
                 const payload = { categoryId: this.id, issues: value }
                 this.$store.dispatch("updateProjectCategoryIssues", payload)
             }
@@ -62,9 +56,9 @@ export default {
   cursor: pointer;
 }
 .issues {
-    height: 100%;
+  height: 100%;
 }
 .draggable {
-    height: 100%;
+  height: 100%;
 }
 </style>
