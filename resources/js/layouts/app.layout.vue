@@ -5,6 +5,7 @@
             <router-view />
         </div>
         <create-project-modal />
+        <confirmation-modal />
     </div>
 </template>
 
@@ -12,12 +13,14 @@
 import { mapActions, mapState } from 'vuex'
 import Navbar from '../components/navbar.component';
 import CreateProjectModal from '../components/create-project-modal.component';
+import ConfirmationModal from '../components/confirmation-modal.component';
 
 export default {
 
     components: {
         Navbar,
-        CreateProjectModal
+        CreateProjectModal,
+        ConfirmationModal
     },
 
     mounted: async function () {

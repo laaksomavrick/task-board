@@ -5,6 +5,9 @@
 -   [ ] Projects CRUD
 -   [ ] Issues view / Kanban Board
 -   [ ] Issues CRUD
+-   [ ] Issues detail
+-   [ ] Issues/Projects Colors
+-   [ ] Issues tags
 -   [ ] Global search
 -   [ ] Notifications
 -   [ ] Invite users / Emails

@@ -6,6 +6,8 @@ import store from "./store/app.store";
 
 //import "vue-material-design-icons/styles.css";
 import "vue-awesome/icons/plus-circle";
+import "vue-awesome/icons/edit";
+import "vue-awesome/icons/trash-alt";
 
 sync(store, router);
 

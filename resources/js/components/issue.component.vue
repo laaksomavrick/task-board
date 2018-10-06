@@ -1,5 +1,5 @@
 <template>
-    <card class="p-4">
+    <card class="issue p-4">
         {{ issue.name }}
     </card>
 </template>
@@ -17,4 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.issue {
+  cursor: pointer;
+}
 </style>

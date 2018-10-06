@@ -19,9 +19,17 @@ const actions = {
         commit("setSelectedProject", {});
     },
     updateProjectCategoryIssues: async ({ commit }, payload) => {
-        commit("setSelectedProjectCategoryIssues", payload)
+        commit("setSelectedProjectCategoryIssues", payload);
         const data = { ids: payload.issues.map(i => i.id) };
-        await axios.patch(`/api/categories/${payload.categoryId}/issues/move`, data);
+        await axios.patch(
+            `/api/categories/${payload.categoryId}/issues/move`,
+            data
+        );
+    },
+    deleteProject: async ({ commit }, id) => {
+        const response = await axios.delete(`/api/projects/${id}`);
+        const json = response.data;
+        commit("removeProject", json);
     }
 };
 
@@ -31,19 +39,26 @@ const mutations = {
     },
     setSelectedProjectCategoryIssues(state, params) {
         const { categoryId, issues } = params;
-        const category = state.selectedProject.categories.find(cat => cat.id === categoryId);
-        const updatedCategory = {...category, issues};
+        const category = state.selectedProject.categories.find(
+            cat => cat.id === categoryId
+        );
+        const updatedCategory = { ...category, issues };
         const updatedCategories = state.selectedProject.categories.map(cat => {
-            return cat.id === categoryId ? updatedCategory : cat
+            return cat.id === categoryId ? updatedCategory : cat;
         });
-        const updatedSelectedProject = {...state.selectedProject, categories: updatedCategories};
+        const updatedSelectedProject = {
+            ...state.selectedProject,
+            categories: updatedCategories
+        };
         state.selectedProject = updatedSelectedProject;
     }
 };
 
 const getters = {
-    categoryIssues: (state) => (categoryId) => {
-        return state.selectedProject.categories.find(cat => cat.id === categoryId).issues;
+    categoryIssues: state => categoryId => {
+        return state.selectedProject.categories.find(
+            cat => cat.id === categoryId
+        ).issues;
     }
 };
 

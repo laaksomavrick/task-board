@@ -53,7 +53,6 @@ export default {
   flex-direction: column;
   max-width: 300px;
   width: 300px;
-  cursor: pointer;
 }
 .issues {
   height: 100%;
