@@ -17,6 +17,7 @@ Route::middleware('auth')->prefix('api')->group(function () {
     Route::get('teams/default', 'TeamsController@show');
     Route::get('users/default', 'UsersController@show');
     Route::get('projects/{project}', 'ProjectsController@show');
+    Route::delete('projects/{project}', 'ProjectsController@destroy');
     Route::post('projects', 'ProjectsController@store');
     Route::patch('categories/{category}/issues/move', 'MoveIssuesController@update');
 });

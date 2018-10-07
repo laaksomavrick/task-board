@@ -28,8 +28,7 @@ const actions = {
     },
     deleteProject: async ({ commit }, id) => {
         const response = await axios.delete(`/api/projects/${id}`);
-        const json = response.data;
-        commit("removeProject", json);
+        commit("removeProject", id);
     }
 };
 

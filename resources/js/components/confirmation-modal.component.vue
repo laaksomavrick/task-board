@@ -40,6 +40,7 @@ export default {
                 await this.data.callback();
                 this.toggleConfirmationModal();
             } catch (e) {
+                // todo handle error
                 console.error(e);
             } finally {
                 this.working = false;

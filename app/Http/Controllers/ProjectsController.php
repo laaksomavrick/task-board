@@ -25,4 +25,11 @@ class ProjectsController extends Controller
             'team_id' => auth()->user()->team->id
         ]);
     }
+
+    public function destroy(Request $request, Project $project)
+    {
+        $this->authorize('delete', $project);
+        $project->delete();
+        return $project;
+    }
 }

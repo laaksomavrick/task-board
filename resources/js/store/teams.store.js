@@ -19,8 +19,8 @@ const mutations = {
     addProject(state, project) {
         state.team.projects = [...state.team.projects, project];
     },
-    removeProject(state, project) {
-        console.log("todo");
+    removeProject(state, id) {
+        state.team.projects = state.team.projects.filter(p => p.id !== id);
     }
 };
 
