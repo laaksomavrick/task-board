@@ -102,13 +102,19 @@ export default {
 .project-card {
   display: flex;
   flex-direction: column;
-  transition: border 100ms, border-color 100ms, transfom 100ms, box-shadow 100ms;
+  transition: border 100ms, border-color 100ms, transform 100ms,
+    box-shadow 100ms, color 100ms;
   cursor: pointer;
 }
 .project-card:hover {
   color: $brand-primary;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
+
+  & .project-bottom .project-options {
+    color: $brand-primary;
+    pointer-events: initial;
+  }
 }
 .project-details {
   flex: 1;
@@ -127,6 +133,9 @@ export default {
   margin-left: auto;
   display: flex;
   flex-direction: row;
+  color: white;
+  pointer-events: none;
+  transition: color 100ms;
 }
 .project-option {
   display: flex;
