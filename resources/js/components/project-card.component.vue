@@ -11,7 +11,7 @@
             </div>
             <div class="project-options">
                 <div class="project-option">
-                    <icon name="edit" :scale="1.25" @click.native="handleEditClick" />
+                    <icon name="edit" :scale="1.25" @click.native="handleEditClick($event, project)" />
                 </div>
                 <div class="project-option">
                     <icon name="trash-alt" :scale="1.25" @click.native="handleDeleteClick($event, project)" />
@@ -41,8 +41,12 @@ export default {
             const { id } = project;
             this.$router.push({ name: 'kanban', params: { id } });
         },
-        handleEditClick (e) {
+        handleEditClick (e, project) {
             e.stopPropagation();
+            const projectData = {
+                project
+            }
+            this.toggleProjectModal(projectData);
         },
         handleDeleteClick (e, project) {
             e.stopPropagation();
@@ -56,6 +60,7 @@ export default {
         },
         ...mapActions([
             'toggleConfirmationModal',
+            'toggleProjectModal',
             'deleteProject'
         ])
     },

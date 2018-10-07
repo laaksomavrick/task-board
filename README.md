@@ -2,7 +2,7 @@
 
 -   [x] Login/Logout/Registration
 -   [x] Projects dashboard
--   [ ] Projects CRUD
+-   [x] Projects CRUD
 -   [ ] Issues view / Kanban Board
 -   [ ] Issues CRUD
 -   [ ] Issues detail
@@ -18,4 +18,4 @@
 -   [ ] Dockerize
 -   [ ] Php linting
 -   [ ] Javascript linting
--   [ ] Theming
+-   [ ] Theme / ui final touches

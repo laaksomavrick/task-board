@@ -4,15 +4,18 @@ const state = {
         callback: null,
         message: null
     },
-    createProjectModalVisible: false
+    projectModal: {
+        visible: false,
+        project: null
+    }
 };
 
 const actions = {
     toggleConfirmationModal: ({ commit }, confirmationData) => {
         commit("toggleConfirmationModal", confirmationData);
     },
-    toggleCreateProjectModal: ({ commit }) => {
-        commit("toggleCreateProjectModal");
+    toggleProjectModal: ({ commit }, projectData) => {
+        commit("toggleProjectModal", projectData);
     }
 };
 
@@ -28,8 +31,14 @@ const mutations = {
 
         state.confirmationModal.visible = !state.confirmationModal.visible;
     },
-    toggleCreateProjectModal(state) {
-        state.createProjectModalVisible = !state.createProjectModalVisible;
+    toggleProjectModal(state, projectData) {
+        if (projectData) {
+            state.projectModal.project = projectData.project;
+        } else {
+            state.projectModal.project = null;
+        }
+
+        state.projectModal.visible = !state.projectModal.visible;
     }
 };
 

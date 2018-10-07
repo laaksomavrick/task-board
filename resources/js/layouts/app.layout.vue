@@ -4,7 +4,7 @@
         <div class="router-container container mx-auto flex-1">
             <router-view />
         </div>
-        <create-project-modal />
+        <project-modal />
         <confirmation-modal />
     </div>
 </template>
@@ -12,14 +12,14 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Navbar from '../components/navbar.component';
-import CreateProjectModal from '../components/create-project-modal.component';
+import ProjectModal from '../components/project-modal.component';
 import ConfirmationModal from '../components/confirmation-modal.component';
 
 export default {
 
     components: {
         Navbar,
-        CreateProjectModal,
+        ProjectModal,
         ConfirmationModal
     },
 

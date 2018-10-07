@@ -1,5 +1,5 @@
 <template>
-    <div @click="toggleCreateProjectModal" class="create-project p-4 m-2 w-auto h-48 rounded-lg border border-grey border-dashed">
+    <div @click="toggleProjectModal" class="create-project p-4 m-2 w-auto h-48 rounded-lg border border-grey border-dashed">
         <icon name="plus-circle" :scale="2.5" />
     </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'toggleCreateProjectModal'
+            'toggleProjectModal'
         ])
     }
 }

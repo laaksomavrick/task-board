@@ -26,6 +26,23 @@ class ProjectsController extends Controller
         ]);
     }
 
+    public function update(Request $request, Project $project)
+    {
+        $this->authorize('update', $project);
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $project->update([
+            'name' => $request['name'],
+            'description' => $request['description'],
+        ]);
+
+        return Project::find($project->id);
+    }
+
     public function destroy(Request $request, Project $project)
     {
         $this->authorize('delete', $project);

@@ -16,10 +16,15 @@ const mutations = {
     setTeam(state, team) {
         state.team = team;
     },
-    addProject(state, project) {
+    createProject(state, project) {
         state.team.projects = [...state.team.projects, project];
     },
-    removeProject(state, id) {
+    updateProject(state, project) {
+        state.team.projects = state.team.projects.map(
+            p => (p.id === project.id ? project : p)
+        );
+    },
+    deleteProject(state, id) {
         state.team.projects = state.team.projects.filter(p => p.id !== id);
     }
 };

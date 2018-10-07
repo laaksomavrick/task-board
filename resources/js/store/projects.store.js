@@ -8,7 +8,15 @@ const actions = {
     createProject: async ({ commit }, payload) => {
         const response = await axios.post("/api/projects", payload);
         const json = response.data;
-        commit("addProject", json);
+        commit("createProject", json);
+    },
+    updateProject: async ({ commit }, payload) => {
+        const response = await axios.patch(
+            `api/projects/${payload.id}`,
+            payload
+        );
+        const json = response.data;
+        commit("updateProject", json);
     },
     fetchSelectedProject: async ({ commit }, id) => {
         const response = await axios.get(`/api/projects/${id}`);
@@ -27,8 +35,8 @@ const actions = {
         );
     },
     deleteProject: async ({ commit }, id) => {
-        const response = await axios.delete(`/api/projects/${id}`);
-        commit("removeProject", id);
+        await axios.delete(`/api/projects/${id}`);
+        commit("deleteProject", id);
     }
 };
 

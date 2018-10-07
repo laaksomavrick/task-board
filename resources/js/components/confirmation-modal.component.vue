@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
-.create-project-modal {
+.confirmation-modal {
   display: flex;
   flex-direction: column;
 }
