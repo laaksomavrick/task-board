@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Colourable;
 
 class Project extends Model
 {
+    use Colourable;
 
     protected $fillable = [
         'name',
@@ -15,7 +17,11 @@ class Project extends Model
     ];
 
     protected $appends = [
-        'users'
+        'users',
+    ];
+
+    protected $with = [
+        'colour'
     ];
 
     public function team()

@@ -29,6 +29,14 @@ class ProjectTest extends TestCase
     /**
      * @test
      */
+    public function a_project_has_a_colour()
+    {
+        $this->assertTrue(isset($this->project->colour));
+    }
+
+    /**
+     * @test
+     */
     public function a_project_belongs_to_a_team()
     {
         $this->assertInstanceOf('App\Team', $this->project->team);
