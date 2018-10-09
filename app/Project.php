@@ -18,9 +18,6 @@ class Project extends Model
 
     protected $appends = [
         'users',
-    ];
-
-    protected $with = [
         'colour'
     ];
 
@@ -53,6 +50,11 @@ class Project extends Model
             ->values()
             ->all();
         return User::whereIn('id', $ids)->get();
+    }
+
+    public function getColourAttribute()
+    {
+        return $this->colour()->first()->colour;
     }
 
 }

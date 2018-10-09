@@ -1,5 +1,5 @@
 <template>
-    <card class="project-card p-4 m-2 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)">
+    <card class="project-card p-4 m-2 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)" :class="backgroundColour">
         <div class="project-details">
             <div class="project-title text-2xl font-semibold">
                 {{ project.name }}
@@ -26,6 +26,7 @@ import { mapActions } from 'vuex';
 import Card from '../components/card.component';
 import UserCircle from '../components/user-circle.component';
 import Icon from 'vue-awesome/components/Icon';
+import { getClassForColour } from '../utils/colourable.utils';
 
 export default {
     props: [
@@ -64,6 +65,12 @@ export default {
             'deleteProject'
         ])
     },
+    computed: {
+        backgroundColour () {
+            console.log(this.project);
+            return getClassForColour(this.project.colour);
+        }
+    }
 }
 </script>
 
@@ -77,12 +84,11 @@ export default {
   cursor: pointer;
 }
 .project-card:hover {
-  color: $brand-primary;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
 
   & .project-bottom .project-options {
-    color: $brand-primary;
+    color: $text-color;
     pointer-events: initial;
   }
 }
@@ -103,7 +109,7 @@ export default {
   margin-left: auto;
   display: flex;
   flex-direction: row;
-  color: white;
+  color: transparent;
   pointer-events: none;
   transition: color 100ms;
 }

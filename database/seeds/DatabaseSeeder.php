@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ])->each(function ($project) use ($team) {
 
+                $project->colour()->update(['colour' => rand(0, 11)]);
+
                 // each project will have 3 categories
 
                 $categories = factory('App\ProjectCategory', 3)->create([

@@ -14,7 +14,7 @@ trait Colourable
 
     public function colour()
     {
-        return $this->morphMany('App\Colour', 'colourable');
+        return $this->morphOne('App\Colour', 'colourable');
     }
 
 }
