@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Colourable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Colourable;
 
     protected $fillable = [
         'name', 'email', 'password',
@@ -19,7 +21,8 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'initials'
+        'initials',
+        'colour'
     ];
 
     public function team()

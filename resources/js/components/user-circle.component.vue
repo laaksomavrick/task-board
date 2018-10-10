@@ -1,16 +1,27 @@
 <template>
-    <div class="user-circle p-1 rounded-full shadow">
+    <div class="user-circle p-1 rounded-full shadow" :class="backgroundColour">
         <div class="user-initial">
-            {{ text }}
+            {{ initials }}
         </div>
     </div>
 </template>
 
 <script>
+import { getClassForColour } from '../utils/colourable.utils';
 export default {
     props: [
-        'text'
-    ]
+        'user'
+    ],
+    computed: {
+        backgroundColour () {
+            const colour = this.user && this.user.colour ? this.user.colour : 0;
+            return getClassForColour(colour);
+        },
+        initials () {
+            const initials = this.user && this.user.initials ? this.user.initials : '';
+            return initials;
+        }
+    }
 }
 </script>
 
@@ -24,7 +35,6 @@ export default {
   border: 2px solid white;
   width: 37.5px;
   height: 37.5px;
-  background: $text-color;
   // cursor: pointer;
 }
 .user-circle:not(:first-child) {

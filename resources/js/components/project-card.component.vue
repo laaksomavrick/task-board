@@ -7,7 +7,7 @@
         </div>
         <div class="project-bottom">
             <div class="project-member-circles">
-                <user-circle v-for="member in project.users" :key="member.user_id" :text="member.initials"></user-circle>
+                <user-circle v-for="user in project.users" :key="user.user_id" :user="user"></user-circle>
             </div>
             <div class="project-options">
                 <div class="project-option">
@@ -67,7 +67,6 @@ export default {
     },
     computed: {
         backgroundColour () {
-            console.log(this.project);
             return getClassForColour(this.project.colour);
         }
     }

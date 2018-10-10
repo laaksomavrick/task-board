@@ -17,12 +17,16 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ]);
 
+            $users->each(function ($user) {
+                $user->colour()->update(['colour' => rand(0, 10)]);
+            });
+
             // each team will have 5 projects
             $projects = factory('App\Project', 5)->create([
                 'team_id' => $team->id
             ])->each(function ($project) use ($team) {
 
-                $project->colour()->update(['colour' => rand(0, 11)]);
+                $project->colour()->update(['colour' => rand(0, 10)]);
 
                 // each project will have 3 categories
 

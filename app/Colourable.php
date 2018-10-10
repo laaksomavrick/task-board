@@ -17,4 +17,9 @@ trait Colourable
         return $this->morphOne('App\Colour', 'colourable');
     }
 
+    public function getColourAttribute()
+    {
+        return $this->colour()->first()->colour;
+    }
+
 }

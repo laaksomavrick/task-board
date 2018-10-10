@@ -52,9 +52,4 @@ class Project extends Model
         return User::whereIn('id', $ids)->get();
     }
 
-    public function getColourAttribute()
-    {
-        return $this->colour()->first()->colour;
-    }
-
 }

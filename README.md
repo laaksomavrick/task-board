@@ -6,7 +6,7 @@
 -   [ ] Issues view / Kanban Board
 -   [ ] Issues CRUD
 -   [ ] Issues detail
--   [ ] Issues/Projects/User Colors
+-   [x] Projects/User Colors
 -   [ ] Issues tags
 -   [ ] Global search
 -   [ ] Notifications
