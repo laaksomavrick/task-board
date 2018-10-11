@@ -17,8 +17,16 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ]);
 
+            $tags = factory('App\Tag', 5)->create([
+                'team_id' => $team->id
+            ]);
+
             $users->each(function ($user) {
                 $user->colour()->update(['colour' => rand(0, 10)]);
+            });
+
+            $tags->each(function ($tag) {
+                $tag->colour()->update(['colour' => rand(0, 10)]);
             });
 
             // each team will have 5 projects
@@ -40,6 +48,7 @@ class DatabaseSeeder extends Seeder
                         $issues = factory('App\Issue')->create([
                             'owner_user_id' => $team->users()->inRandomOrder()->first()->id,
                             'assignee_user_id' => $team->users()->inRandomOrder()->first()->id,
+                            'tag_id' => $team->tags()->inRandomOrder()->first()->id,
                             'project_category_id' => $category->id,
                             'project_id' => $project->id
                         ]);

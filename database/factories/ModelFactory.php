@@ -64,7 +64,19 @@ $factory->define(App\Issue::class, function (Faker $faker) {
         'project_category_id' => function () {
             return factory(App\ProjectCategory::class)->create()->id;
         },
+        'tag_id' => function () {
+            return factory(App\Tag::class)->create()->id;
+        },
         'name' => $faker->sentence,
         'description' => $faker->paragraph
+    ];
+});
+
+$factory->define(App\Tag::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'team_id' => function () {
+            return factory(App\Team::class)->create()->id;
+        },
     ];
 });

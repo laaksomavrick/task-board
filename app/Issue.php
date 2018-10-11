@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
+    protected $with = [
+        'tag'
+    ];
+
     public function owner()
     {
         return $this->belongsTo('App\User', 'owner_user_id');
@@ -19,6 +23,11 @@ class Issue extends Model
     public function project()
     {
         return $this->belongsTo('App\Project');
+    }
+
+    public function tag()
+    {
+        return $this->belongsTo('App\Tag');
     }
 
     public function projectCategory()

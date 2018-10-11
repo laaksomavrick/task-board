@@ -20,7 +20,7 @@ class IssueTest extends TestCase
     /**
      * @test
      */
-    public function an_issue_has_an_owner()
+    public function an_issue_belongs_to_an_owner()
     {
         $this->assertInstanceOf('App\User', $this->issue->owner);
     }
@@ -28,7 +28,7 @@ class IssueTest extends TestCase
     /**
      * @test
      */
-    public function an_issue_has_an_assignee()
+    public function an_issue_belongs_to_an_assignee()
     {
         $this->assertInstanceOf('App\User', $this->issue->assignee);
     }
@@ -36,7 +36,7 @@ class IssueTest extends TestCase
     /**
      * @test
      */
-    public function an_issue_has_a_project()
+    public function an_issue_belongs_to_a_project()
     {
         $this->assertInstanceOf('App\Project', $this->issue->project);
     }
@@ -44,8 +44,16 @@ class IssueTest extends TestCase
     /**
      * @test
      */
-    public function an_issue_has_a_project_category()
+    public function an_issue_belongs_to_a_project_category()
     {
         $this->assertInstanceOf('App\ProjectCategory', $this->issue->projectCategory);
+    }
+
+    /**
+     * @test
+     */
+    public function an_issue_belongs_to_a_tag()
+    {
+        $this->assertInstanceOf('App\Tag', $this->issue->tag);
     }
 }

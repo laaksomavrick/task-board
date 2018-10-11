@@ -37,6 +37,15 @@ class TeamTest extends TestCase
     /**
      * @test
      */
+    public function a_team_has_many_tags()
+    {
+        create('App\Tag', ['team_id' => $this->team->id], 3);
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->team->tags);
+    }
+
+    /**
+     * @test
+     */
     public function a_team_has_many_projects()
     {
         create('App\Project', ['team_id' => $this->team->id], 3);

@@ -19,6 +19,7 @@ class CreateIssuesTable extends Migration
             $table->unsignedInteger('assignee_user_id')->index();
             $table->unsignedInteger('project_id')->index();
             $table->unsignedInteger('project_category_id')->index();
+            $table->unsignedInteger('tag_id')->index();
             $table->string('name');
             $table->text('description');
             $table->timestamps();

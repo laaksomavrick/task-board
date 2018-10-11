@@ -22,4 +22,9 @@ class Team extends Model
         return $this->hasManyThrough('App\Issue', 'App\Project');
     }
 
+    public function tags()
+    {
+        return $this->hasMany('App\Tag');
+    }
+
 }

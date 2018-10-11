@@ -7,7 +7,7 @@
 -   [ ] Issues CRUD
 -   [ ] Issues detail
 -   [x] Projects/User Colors
--   [ ] Issues tags
+-   [x] Issues tags
 -   [ ] Global search
 -   [ ] Notifications
 -   [ ] Invite users / Emails
