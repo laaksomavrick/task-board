@@ -17,5 +17,5 @@
 -   [ ] Permissions / User roles
 -   [ ] Dockerize
 -   [ ] Php linting
--   [ ] Javascript linting
+-   [x] Javascript linting
 -   [ ] Theme / ui final touches
