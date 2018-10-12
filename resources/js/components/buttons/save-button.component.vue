@@ -4,24 +4,20 @@
 
 <script>
 export default {
-    props: [
-        'onClick',
-        'valid',
-        'text'
-    ]
-}
+    props: ["onClick", "valid", "text"]
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .save {
-  margin-left: auto;
-  width: auto;
+    margin-left: auto;
+    width: auto;
 }
 .save:focus {
-  outline: none;
+    outline: none;
 }
 .active {
-  color: $brand-primary;
+    color: $brand-primary;
 }
 </style>

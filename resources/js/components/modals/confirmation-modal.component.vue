@@ -9,32 +9,31 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import Modal from './modal.component';
+import { mapState, mapActions } from "vuex";
+import Modal from "./modal.component";
 
 export default {
     components: {
         Modal
     },
-    data () {
+    data() {
         return {
             working: false
-        }
+        };
     },
     computed: mapState({
-        confirmationModalVisible (state) {
+        confirmationModalVisible(state) {
             return state.ui.confirmationModal.visible;
         },
-        message (state) {
+        message(state) {
             return state.ui.confirmationModal.message;
         },
-        data (state) {
+        data(state) {
             return state.ui.confirmationModal;
         }
     }),
     methods: {
-
-        async destroy () {
+        async destroy() {
             try {
                 this.working = true;
                 await this.data.callback();
@@ -47,36 +46,34 @@ export default {
             }
         },
 
-        ...mapActions([
-            'toggleConfirmationModal'
-        ])
+        ...mapActions(["toggleConfirmationModal"])
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .confirmation-modal {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .input {
-  outline: none;
-  transition: box-shadow 100ms, border-color 100ms;
+    outline: none;
+    transition: box-shadow 100ms, border-color 100ms;
 }
 .input:focus {
-  box-shadow: 0 0 0 1px $brand-primary;
-  border-color: $brand-primary;
+    box-shadow: 0 0 0 1px $brand-primary;
+    border-color: $brand-primary;
 }
 .actions {
-  display: flex;
+    display: flex;
 }
 .destroy {
-  margin-left: auto;
-  width: auto;
-  color: $brand-danger;
+    margin-left: auto;
+    width: auto;
+    color: $brand-danger;
 }
 .destroy:focus {
-  outline: none;
+    outline: none;
 }
 </style>

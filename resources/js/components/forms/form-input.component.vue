@@ -12,29 +12,24 @@
 </template>
 
 <script>
-
 export default {
-    props: [
-        'label',
-        'value'
-    ],
+    props: ["label", "value"],
     methods: {
-        handleInput (e) {
-            this.$emit('input', e.target.value);
+        handleInput(e) {
+            this.$emit("input", e.target.value);
         }
     }
-}
-
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .input {
-  outline: none;
-  transition: box-shadow 100ms, border-color 100ms;
+    outline: none;
+    transition: box-shadow 100ms, border-color 100ms;
 }
 .input:focus {
-  box-shadow: 0 0 0 1px $brand-primary;
-  border-color: $brand-primary;
+    box-shadow: 0 0 0 1px $brand-primary;
+    border-color: $brand-primary;
 }
 </style>

@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import Modal from './modal.component';
-import FormInput from '../forms/form-input.component';
-import SaveButton from '../buttons/save-button.component';
+import { mapState, mapActions } from "vuex";
+import Modal from "./modal.component";
+import FormInput from "../forms/form-input.component";
+import SaveButton from "../buttons/save-button.component";
 
 // todos
 // err handling generic component
@@ -24,50 +24,49 @@ export default {
         FormInput,
         SaveButton
     },
-    data () {
+    data() {
         return {
-            name: '',
-            description: '',
+            name: "",
+            description: "",
             working: false
-        }
+        };
     },
     watch: {
-        project (newVal, oldval) {
+        project(newVal, oldVal) {
             if (newVal) {
                 this.name = newVal.name;
-                this.description = newVal.description
+                this.description = newVal.description;
             } else {
-                this.name = '';
-                this.description = '';
+                this.name = "";
+                this.description = "";
             }
         }
     },
     computed: mapState({
-        projectModalVisible (state) {
+        projectModalVisible(state) {
             return state.ui.projectModal.visible;
         },
-        project (state) {
+        project(state) {
             return state.ui.projectModal.project;
         },
-        valid () {
-            return this.name !== '' && this.description !== '';
+        valid() {
+            return this.name !== "" && this.description !== "";
         },
-        buttonText () {
-            return this.working ? 'Saving...' : 'Save';
+        buttonText() {
+            return this.working ? "Saving..." : "Save";
         }
     }),
     methods: {
-        ...mapActions([
-            'toggleProjectModal',
-            'createProject',
-            'updateProject'
-        ]),
+        ...mapActions(["toggleProjectModal", "createProject", "updateProject"]),
 
-        async save () {
+        async save() {
             try {
                 if (!this.valid) return;
                 this.working = true;
-                const payload = { name: this.name, description: this.description }
+                const payload = {
+                    name: this.name,
+                    description: this.description
+                };
                 await this.action(payload);
                 this.toggleProjectModal();
             } catch (e) {
@@ -77,20 +76,22 @@ export default {
             }
         },
 
-        action (payload) {
-            return this.project ? this.updateProject({ ...payload, id: this.project.id }) : this.createProject(payload)
+        action(payload) {
+            return this.project
+                ? this.updateProject({ ...payload, id: this.project.id })
+                : this.createProject(payload);
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .project-modal {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .actions {
-  display: flex;
+    display: flex;
 }
 </style>

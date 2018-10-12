@@ -10,40 +10,35 @@
 </template>
 
 <script>
-
-import Card from './card.component';
-import { getClassForColour } from '../utils/colourable.utils';
+import Card from "./card.component";
+import { getClassForColour } from "../utils/colourable.utils";
 export default {
-    props: [
-        'issue'
-    ],
+    props: ["issue"],
     components: {
         Card
     },
     computed: {
-        name () {
+        name() {
             return this.issue.name;
         },
-        tag () {
+        tag() {
             return this.issue.tag.name;
         },
-        tagBackground () {
+        tagBackground() {
             return getClassForColour(this.issue.tag.colour);
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .issue {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
-.name {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 .tag {
-  width: fit-content;
-  color: white;
+    width: fit-content;
+    color: white;
 }
 </style>

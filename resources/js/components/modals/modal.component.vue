@@ -9,25 +9,23 @@
 </template>
 
 <script>
-import Card from '../card.component';
+import Card from "../card.component";
+
 export default {
     components: {
         Card
     },
-    props: [
-        'isOpen',
-        'toggle'
-    ],
+    props: ["isOpen", "toggle"],
     methods: {
-        maskClicked: function () {
+        maskClicked: function() {
             this.toggle();
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .modal-mask {
-  background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 </style>

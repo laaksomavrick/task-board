@@ -7,41 +7,40 @@
 </template>
 
 <script>
-import { getClassForColour } from '../utils/colourable.utils';
+import { getClassForColour } from "../utils/colourable.utils";
 export default {
-    props: [
-        'user'
-    ],
+    props: ["user"],
     computed: {
-        backgroundColour () {
+        backgroundColour() {
             const colour = this.user && this.user.colour ? this.user.colour : 0;
             return getClassForColour(colour);
         },
-        initials () {
-            const initials = this.user && this.user.initials ? this.user.initials : '';
+        initials() {
+            const initials =
+                this.user && this.user.initials ? this.user.initials : "";
             return initials;
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .user-circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border: 2px solid white;
-  width: 37.5px;
-  height: 37.5px;
-  // cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 2px solid white;
+    width: 37.5px;
+    height: 37.5px;
+    // cursor: pointer;
 }
 .user-circle:not(:first-child) {
-  margin-left: -7.5px;
+    margin-left: -7.5px;
 }
 .user-initial {
-  margin-top: 2px;
-  // user-select: none;
+    margin-top: 2px;
+    // user-select: none;
 }
 </style>

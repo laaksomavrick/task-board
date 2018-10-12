@@ -22,106 +22,104 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import Card from '../components/card.component';
-import UserCircle from '../components/user-circle.component';
-import Icon from 'vue-awesome/components/Icon';
-import { getClassForColour } from '../utils/colourable.utils';
+import { mapActions } from "vuex";
+import Card from "../components/card.component";
+import UserCircle from "../components/user-circle.component";
+import Icon from "vue-awesome/components/Icon";
+import { getClassForColour } from "../utils/colourable.utils";
 
 export default {
-    props: [
-        'project'
-    ],
+    props: ["project"],
     components: {
         Card,
         UserCircle,
         Icon
     },
     methods: {
-        handleProjectClick (project) {
+        handleProjectClick(project) {
             const { id } = project;
-            this.$router.push({ name: 'kanban', params: { id } });
+            this.$router.push({ name: "kanban", params: { id } });
         },
-        handleEditClick (e, project) {
+        handleEditClick(e, project) {
             e.stopPropagation();
             const projectData = {
                 project
-            }
+            };
             this.toggleProjectModal(projectData);
         },
-        handleDeleteClick (e, project) {
+        handleDeleteClick(e, project) {
             e.stopPropagation();
             const confirmationData = {
                 message: `Are you sure you want to delete ${project.name}?`,
                 callback: async () => {
-                    await this.deleteProject(project.id)
+                    await this.deleteProject(project.id);
                 }
-            }
+            };
             this.toggleConfirmationModal(confirmationData);
         },
         ...mapActions([
-            'toggleConfirmationModal',
-            'toggleProjectModal',
-            'deleteProject'
+            "toggleConfirmationModal",
+            "toggleProjectModal",
+            "deleteProject"
         ])
     },
     computed: {
-        backgroundColour () {
+        backgroundColour() {
             return getClassForColour(this.project.colour);
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~@/app.scss";
 .project-card {
-  display: flex;
-  flex-direction: column;
-  transition: border 100ms, border-color 100ms, transform 100ms,
-    box-shadow 100ms, color 100ms;
-  cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: border 100ms, border-color 100ms, transform 100ms,
+        box-shadow 100ms, color 100ms;
+    cursor: pointer;
 }
 .project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
 
-  & .project-bottom .project-options {
-    color: $text-color;
-    pointer-events: initial;
-  }
+    & .project-bottom .project-options {
+        color: $text-color;
+        pointer-events: initial;
+    }
 }
 .project-details {
-  flex: 1;
+    flex: 1;
 }
 .project-title {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .project-bottom {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 .project-options {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row;
-  color: transparent;
-  pointer-events: none;
-  transition: color 100ms;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    color: transparent;
+    pointer-events: none;
+    transition: color 100ms;
 }
 .project-option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
 }
 .project-member-circles {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
 }
 </style>

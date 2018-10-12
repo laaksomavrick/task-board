@@ -14,50 +14,45 @@
 </template>
 
 <script>
-import Draggable from 'vuedraggable';
-import Issue from './issue.component';
+import Draggable from "vuedraggable";
+import Issue from "./issue.component";
 
 export default {
-
-    props: [
-        'category'
-    ],
+    props: ["category"],
     components: {
         Issue,
         Draggable
     },
     computed: {
-        id () {
+        id() {
             return this.category ? this.category.id : null;
         },
         issues: {
-            get () {
+            get() {
                 return this.$store.getters.categoryIssues(this.id);
             },
-            set (value) {
-                const payload = { categoryId: this.id, issues: value }
-                this.$store.dispatch("updateProjectCategoryIssues", payload)
+            set(value) {
+                const payload = { categoryId: this.id, issues: value };
+                this.$store.dispatch("updateProjectCategoryIssues", payload);
             }
         }
     }
-
-}
-
+};
 </script>
 
 <style lang="scss" scoped>
 .category {
-  height: 100%;
-  display: flex;
-  flex: 0 0 300px;
-  flex-direction: column;
-  max-width: 300px;
-  width: 300px;
+    height: 100%;
+    display: flex;
+    flex: 0 0 300px;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
 }
 .issues {
-  height: 100%;
+    height: 100%;
 }
 .draggable {
-  height: 100%;
+    height: 100%;
 }
 </style>

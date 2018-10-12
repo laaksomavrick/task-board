@@ -5,30 +5,28 @@
 </template>
 
 <script>
-import Icon from 'vue-awesome/components/Icon'
-import { mapActions } from 'vuex'
+import Icon from "vue-awesome/components/Icon";
+import { mapActions } from "vuex";
 export default {
     components: {
         Icon
     },
     methods: {
-        ...mapActions([
-            'toggleProjectModal'
-        ])
+        ...mapActions(["toggleProjectModal"])
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .create-project {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: #b8c2cc; //text-grey
-  transition: color 100ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #b8c2cc; //text-grey
+    transition: color 100ms;
 }
 .create-project:hover {
-  color: #8795a1; //text-grey-light
+    color: #8795a1; //text-grey-light
 }
 </style>
