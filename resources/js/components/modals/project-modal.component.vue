@@ -1,27 +1,9 @@
 <template>
     <modal class="project-modal" :isOpen="projectModalVisible" :toggle="toggleProjectModal">
-        <div class="pb-4">
-            <div class="mb-2">
-                <label class="text-grey-dark">
-                    Project
-                </label>
-            </div>
-            <div>
-                <input v-model="name" class="input appearance-none border rounded w-full py-2 px-3" type="text" placeholder="Name">
-            </div>
-        </div>
-        <div class="pb-4">
-            <div class="mb-2">
-                <label class="text-grey-dark">
-                    Description
-                </label>
-            </div>
-            <div>
-                <input v-model="description" class="input appearance-none border rounded w-full py-2 px-3" type="text" placeholder="Description">
-            </div>
-        </div>
+        <form-input label="Project" v-model="name" />
+        <form-input label="Description" v-model="description" />
         <div class="actions">
-            <button @click="save" class="save border py-2 px-4 rounded text-grey-light" :class="{ 'active': this.valid }">{{ buttonText }}</button>
+            <save-button :onClick="save" :valid="valid" :text="buttonText" />
         </div>
     </modal>
 </template>
@@ -29,14 +11,18 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import Modal from './modal.component';
+import FormInput from '../forms/form-input.component';
+import SaveButton from '../buttons/save-button.component';
 
 // todos
-// refactor inputs to generic form component
 // err handling generic component
 // color picker
+
 export default {
     components: {
-        Modal
+        Modal,
+        FormInput,
+        SaveButton
     },
     data () {
         return {

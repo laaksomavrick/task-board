@@ -11,9 +11,6 @@
 
 <script>
 
-// assignee
-// tag
-
 import Card from './card.component';
 import { getClassForColour } from '../utils/colourable.utils';
 export default {

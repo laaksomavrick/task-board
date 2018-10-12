@@ -12,8 +12,8 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Navbar from '../components/navbar.component';
-import ProjectModal from '../components/project-modal.component';
-import ConfirmationModal from '../components/confirmation-modal.component';
+import ProjectModal from '../components/modals/project-modal.component';
+import ConfirmationModal from '../components/modals/confirmation-modal.component';
 
 export default {
 
