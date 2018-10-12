@@ -28,4 +28,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/app.scss";
+.input {
+  outline: none;
+  transition: box-shadow 100ms, border-color 100ms;
+}
+.input:focus {
+  box-shadow: 0 0 0 1px $brand-primary;
+  border-color: $brand-primary;
+}
 </style>

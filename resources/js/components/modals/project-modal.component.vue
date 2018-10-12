@@ -90,25 +90,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.input {
-  outline: none;
-  transition: box-shadow 100ms, border-color 100ms;
-}
-.input:focus {
-  box-shadow: 0 0 0 1px $brand-primary;
-  border-color: $brand-primary;
-}
 .actions {
   display: flex;
-}
-.save {
-  margin-left: auto;
-  width: auto;
-}
-.save:focus {
-  outline: none;
-}
-.active {
-  color: $brand-primary;
 }
 </style>

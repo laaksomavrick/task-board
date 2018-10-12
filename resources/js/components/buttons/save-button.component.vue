@@ -13,4 +13,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/app.scss";
+.save {
+  margin-left: auto;
+  width: auto;
+}
+.save:focus {
+  outline: none;
+}
+.active {
+  color: $brand-primary;
+}
 </style>
