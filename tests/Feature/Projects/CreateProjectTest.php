@@ -17,7 +17,8 @@ class CreateProjectTest extends TestCase
         $this->signIn();
         $project = $this->post("api/projects", [
             'name' => 'a name',
-            'description' => 'a description'
+            'description' => 'a description',
+            'colour' => 0
         ]);
         $project->assertStatus(201);
     }
@@ -30,7 +31,8 @@ class CreateProjectTest extends TestCase
         $this->expectException('Illuminate\Auth\AuthenticationException');
         $project = $this->post("api/projects", [
             'name' => 'a name',
-            'description' => 'a description'
+            'description' => 'a description',
+            'colour' => 0
         ])->json();
     }
 
@@ -44,7 +46,8 @@ class CreateProjectTest extends TestCase
         $project = $this->post("api/projects", [
             'name' => 'a name',
             'description' => 'a description',
-            'team_id' => 999
+            'team_id' => 999,
+            'colour' => 0
         ])->json();
         $this->assertTrue($project['team_id'] !== 999);
         $this->assertTrue($project['team_id'] === $userDefaultTeamId);
