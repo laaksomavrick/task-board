@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-container container mx-auto py-4">
-        <user-circle class="member-circle mr-2" :text="user.initials" />
+        <user-circle class="member-circle mr-2" :user="user" />
     </div>
 </template>
 

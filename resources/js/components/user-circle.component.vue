@@ -1,5 +1,5 @@
 <template>
-    <div class="user-circle p-1 rounded-full shadow" :class="backgroundColour">
+    <div class="user-circle p-1 rounded-full" :class="backgroundColour">
         <div class="user-initial">
             {{ initials }}
         </div>
@@ -31,7 +31,6 @@ export default {
     justify-content: center;
     align-items: center;
     color: white;
-    border: 2px solid white;
     width: 37.5px;
     height: 37.5px;
     // cursor: pointer;

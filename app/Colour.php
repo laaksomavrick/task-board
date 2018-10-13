@@ -26,7 +26,6 @@ class Colour extends Model
     public static function colours()
     {
         return [
-            0,
             1,
             2,
             3,

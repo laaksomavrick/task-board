@@ -1,13 +1,13 @@
 <template>
     <card class="project-card p-4 m-2 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)" :class="backgroundColour">
-        <div class="project-details">
-            <div class="project-title text-2xl font-semibold">
-                {{ project.name }}
-            </div>
-        </div>
-        <div class="project-bottom">
-            <div class="project-member-circles">
-                <user-circle v-for="user in project.users" :key="user.user_id" :user="user"></user-circle>
+        <div class="project-inner">
+            <div class="project-details">
+                <div class="project-title text-2xl font-semibold">
+                    {{ project.name }}
+                </div>
+                <!-- <div class="project-member-circles">
+                    <user-circle v-for="user in project.users" :key="user.user_id" :user="user"></user-circle>
+                </div> -->
             </div>
             <div class="project-options">
                 <div class="project-option">
@@ -79,33 +79,40 @@ export default {
     transition: border 100ms, border-color 100ms, transform 100ms,
         box-shadow 100ms, color 100ms;
     cursor: pointer;
+    color: white;
 }
 .project-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08); // shadow-md
 
-    & .project-bottom .project-options {
-        color: $text-color;
+    & .project-inner .project-options {
+        color: white;
         pointer-events: initial;
     }
 }
-.project-details {
+.project-inner {
     flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.project-details {
+    display: flex;
+    flex-direction: column;
 }
 .project-title {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    flex: 1;
 }
-.project-bottom {
+.project-member-circles {
     display: flex;
-    align-items: center;
 }
 .project-options {
     margin-left: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: transparent;
     pointer-events: none;
     transition: color 100ms;
@@ -116,10 +123,6 @@ export default {
     justify-content: center;
     width: 25px;
     height: 25px;
-}
-.project-member-circles {
-    display: flex;
-    align-items: center;
-    margin-top: auto;
+    margin-bottom: 0.5rem;
 }
 </style>
