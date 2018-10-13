@@ -8,6 +8,7 @@ import store from "./store/app.store";
 import "vue-awesome/icons/plus-circle";
 import "vue-awesome/icons/edit";
 import "vue-awesome/icons/trash-alt";
+import "vue-awesome/icons/ellipsis-v";
 import "vue-awesome/icons/check";
 
 sync(store, router);
