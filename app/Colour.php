@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Colour extends Model
 {
 
+    protected $fillable = [
+        'colour'
+    ];
+
     public static function boot()
     {
         self::creating(function ($model) {

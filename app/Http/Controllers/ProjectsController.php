@@ -19,11 +19,15 @@ class ProjectsController extends Controller
             'name' => 'required'
         ]);
 
-        return Project::create([
+        $project = Project::create([
             'name' => $request['name'],
             'description' => $request['description'],
             'team_id' => auth()->user()->team->id
         ]);
+
+        $project->colour()->update(['colour' => $request['colour']]);
+
+        return $project;
     }
 
     public function update(Request $request, Project $project)
