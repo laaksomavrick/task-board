@@ -15,7 +15,6 @@ module.exports = {
     },
     rules: {
         indent: ["error", 4],
-        "linebreak-style": ["error", "unix"],
-        semi: ["error", "always"]
+        "linebreak-style": ["error", "unix"]
     }
 };

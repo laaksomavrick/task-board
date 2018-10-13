@@ -18,7 +18,8 @@ class UpdateProjectTest extends TestCase
         $project = create('App\Project', ['team_id' => $this->user->team->id, 'name' => 'a name']);
         $response = $this->patch("api/projects/{$project->id}", [
             'name' => 'another name',
-            'description' => 'another description'
+            'description' => 'another description',
+            'colour' => 0
         ]);
         $this->assertEquals($response->json()['name'], 'another name');
         $response->assertStatus(200);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use App\User;
+use App\Colour;
 use Illuminate\Http\Request;
 
 class TeamsController extends Controller
@@ -48,7 +49,9 @@ class TeamsController extends Controller
     public function show()
     {
         $user = User::find(auth()->id());
-        return $user->team()->with('projects')->first();
+        $team = $user->team()->with('projects')->first();
+        $team['colours'] = Colour::colours();
+        return $team;
     }
 
     /**

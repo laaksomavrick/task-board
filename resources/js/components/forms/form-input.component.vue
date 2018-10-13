@@ -1,22 +1,30 @@
 <template>
-    <div class="pb-4">
-        <div class="mb-2">
-            <label class="text-grey-dark">
-                {{ label }}
-            </label>
-        </div>
+    <form-element-padding>
+        <form-label :label="label" />
         <div>
-            <input v-bind:value="value" v-on:input="handleInput" class="input appearance-none border rounded w-full py-2 px-3" type="text" placeholder="Name">
+            <!-- TODO move this to controls when needed -->
+            <input v-bind:value="value" v-on:input="handleInput" class="input appearance-none border rounded w-full py-2 px-3" type="text" :placeholder="placeholder">
         </div>
-    </div>
+    </form-element-padding>
 </template>
 
 <script>
+import FormLabel from "./form-label.component";
+import FormElementPadding from "./form-element-padding.component";
 export default {
     props: ["label", "value"],
+    components: {
+        FormLabel,
+        FormElementPadding
+    },
     methods: {
         handleInput(e) {
             this.$emit("input", e.target.value);
+        }
+    },
+    computed: {
+        placeholder() {
+            return ``;
         }
     }
 };

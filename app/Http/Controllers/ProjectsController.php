@@ -32,13 +32,16 @@ class ProjectsController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'colour' => 'required'
         ]);
 
         $project->update([
             'name' => $request['name'],
             'description' => $request['description'],
         ]);
+
+        $project->colour()->update(['colour' => $request['colour']]);
 
         return Project::find($project->id);
     }

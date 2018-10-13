@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $users->each(function ($user) {
-                $user->colour()->update(['colour' => rand(0, 10)]);
+                $user->colour()->update(['colour' => array_rand(App\Colour::colours())]);
             });
 
             $tags->each(function ($tag) {
-                $tag->colour()->update(['colour' => rand(0, 10)]);
+                $tag->colour()->update(['colour' => array_rand(App\Colour::colours())]);
             });
 
             // each team will have 5 projects
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ])->each(function ($project) use ($team) {
 
-                $project->colour()->update(['colour' => rand(0, 10)]);
+                $project->colour()->update(['colour' => array_rand(App\Colour::colours())]);
 
                 // each project will have 3 categories
 
