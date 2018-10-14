@@ -13,7 +13,7 @@
                 <div class="project-option" @click="handleDropdownClick">
                     <icon name="ellipsis-v" :scale="1.25" />
                 </div>
-                <dropdown :visible="dropdownVisible" :items="dropdownItems" :clickaway="closeDropdown" />
+                <dropdown :items="dropdownItems" :close="closeDropdown" ref="dropdown" />
             </div>
         </div>
     </card>
@@ -26,8 +26,6 @@ import Card from "../components/card.component";
 import UserCircle from "../components/user-circle.component";
 import Dropdown from "../components/dropdown.component";
 import { getClassForColour } from "../utils/colourable.utils";
-
-// todo: move dropdown visibility to state mgmt; only once can ever be open (curr bug)
 
 export default {
     props: ["project"],
@@ -42,8 +40,7 @@ export default {
             dropdownItems: [
                 { text: "Edit", callback: this.handleEditClick },
                 { text: "Delete", callback: this.handleDeleteClick }
-            ],
-            dropdownVisible: false
+            ]
         };
     },
     methods: {
@@ -72,14 +69,16 @@ export default {
         },
         handleDropdownClick(e) {
             e.stopPropagation();
-            this.dropdownVisible = true;
+            const id = this.$refs.dropdown.uuid;
+            this.toggleDropdown(id);
         },
         closeDropdown() {
-            this.dropdownVisible = false;
+            this.toggleDropdown(null);
         },
         ...mapActions([
             "toggleConfirmationModal",
             "toggleProjectModal",
+            "toggleDropdown",
             "deleteProject"
         ])
     },

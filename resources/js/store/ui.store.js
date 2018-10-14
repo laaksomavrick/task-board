@@ -7,7 +7,8 @@ const state = {
     projectModal: {
         visible: false,
         project: null
-    }
+    },
+    dropdown: null
 };
 
 const actions = {
@@ -16,6 +17,9 @@ const actions = {
     },
     toggleProjectModal: ({ commit }, projectData) => {
         commit("toggleProjectModal", projectData);
+    },
+    toggleDropdown: ({ commit }, id) => {
+        commit("toggleDropdown", id);
     }
 };
 
@@ -39,6 +43,13 @@ const mutations = {
         }
 
         state.projectModal.visible = !state.projectModal.visible;
+    },
+    toggleDropdown(state, id) {
+        if (id) {
+            state.dropdown = id;
+        } else {
+            state.dropdown = null;
+        }
     }
 };
 

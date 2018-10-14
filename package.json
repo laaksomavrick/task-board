@@ -17,6 +17,7 @@
         "eslint-plugin-prettier": "^3.0.0",
         "eslint-plugin-vue": "^4.7.1",
         "laravel-mix": "^2.0",
+        "uuid": "^3.3.2",
         "vue": "^2.5.7",
         "vue-awesome": "^3.1.2",
         "vue-clickaway": "^2.2.2",
