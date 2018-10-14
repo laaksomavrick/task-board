@@ -33,7 +33,8 @@ export default {
     color: white;
     width: 37.5px;
     height: 37.5px;
-    // cursor: pointer;
+    font-weight: 600;
+    cursor: pointer;
 }
 .user-circle:not(:first-child) {
     margin-left: -7.5px;

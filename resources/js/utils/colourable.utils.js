@@ -20,8 +20,6 @@ export const getClassForColour = colour => {
         return "bg-purple";
     case 9:
         return "bg-pink";
-    case 10:
-        return "bg-black";
     default:
         return "bg-white";
     }
