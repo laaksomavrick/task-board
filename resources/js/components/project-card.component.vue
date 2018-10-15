@@ -1,5 +1,5 @@
 <template>
-    <card class="project-card p-4 m-2 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)" :class="backgroundColour">
+    <card class="project-card p-4 w-auto h-48" :key="project.id" @click.native="handleProjectClick(project)" :class="backgroundColour">
         <div class="project-inner">
             <div class="project-details">
                 <div class="project-title text-2xl font-semibold">
@@ -99,6 +99,7 @@ export default {
         box-shadow 100ms, color 100ms;
     cursor: pointer;
     color: white;
+    margin: 2px;
 }
 .project-card:hover {
     // transform: translateY(-2px);

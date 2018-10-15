@@ -36,7 +36,7 @@ export default {
 .projects {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 0.5rem;
+    grid-gap: 0em;
     align-items: center;
 }
 @media only screen and (max-width: $md) {
