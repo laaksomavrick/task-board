@@ -26,6 +26,7 @@ import Card from "../components/card.component";
 import UserCircle from "../components/user-circle.component";
 import Dropdown from "../components/dropdown.component";
 import { getClassForColour } from "../utils/colourable.utils";
+import DropdownMixin from "../mixins/dropdown.mixin";
 
 export default {
     props: ["project"],
@@ -35,6 +36,7 @@ export default {
         Icon,
         Dropdown
     },
+    mixins: [DropdownMixin],
     data() {
         return {
             dropdownItems: [
@@ -67,18 +69,9 @@ export default {
             this.closeDropdown();
             this.toggleConfirmationModal(confirmationData);
         },
-        handleDropdownClick(e) {
-            e.stopPropagation();
-            const id = this.$refs.dropdown.uuid;
-            this.toggleDropdown(id);
-        },
-        closeDropdown() {
-            this.toggleDropdown(null);
-        },
         ...mapActions([
             "toggleConfirmationModal",
             "toggleProjectModal",
-            "toggleDropdown",
             "deleteProject"
         ])
     },
