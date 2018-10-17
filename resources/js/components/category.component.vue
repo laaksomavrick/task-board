@@ -1,9 +1,18 @@
 <template>
     <div class="category px-2">
-        <h3 class="name">
-            {{ category.name }}
-        </h3>
+        <div class="category-header">
+            <h3 class="category-name">
+                {{ category.name }}
+            </h3>
+            <div class="category-options" @click="handleDropdownClick">
+                <icon class="" name="ellipsis-v" :scale="1" />
+                <dropdown :items="dropdownItems" :close="closeDropdown" ref="dropdown" />
+            </div>
+        </div>
         <div class="issues">
+            <div v-if="addIssue">
+                Hello world
+            </div>
             <draggable class="draggable" v-model="issues" :options="{group: 'issue'}">
                 <div v-for="issue in issues" :key="issue.id" class="py-2">
                     <issue :issue="issue" />
@@ -14,14 +23,34 @@
 </template>
 
 <script>
+import Icon from "vue-awesome/components/Icon";
 import Draggable from "vuedraggable";
 import Issue from "./issue.component";
+import Dropdown from "./dropdown.component";
+import DropdownMixin from "../mixins/dropdown.mixin";
 
 export default {
     props: ["category"],
     components: {
         Issue,
-        Draggable
+        Draggable,
+        Dropdown,
+        Icon
+    },
+    mixins: [DropdownMixin],
+    data() {
+        return {
+            dropdownItems: [
+                { text: "Add new issue", callback: this.showAddIssue }
+            ],
+            addIssue: false
+        };
+    },
+    methods: {
+        showAddIssue() {
+            this.addIssue = true;
+            this.closeDropdown();
+        }
     },
     computed: {
         id() {
@@ -49,10 +78,22 @@ export default {
     max-width: 300px;
     width: 300px;
 }
-.issues {
-    height: 100%;
+.category-header {
+    display: flex;
 }
-.draggable {
+.category-name {
+    flex: 1;
+}
+.category-options {
+    margin-left: auto;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.issues {
     height: 100%;
 }
 </style>
