@@ -10,9 +10,7 @@
             </div>
         </div>
         <div class="issues">
-            <div v-if="addIssue">
-                Hello world
-            </div>
+            <add-issue v-if="addIssue" />
             <draggable class="draggable" v-model="issues" :options="{group: 'issue'}">
                 <div v-for="issue in issues" :key="issue.id" class="py-2">
                     <issue :issue="issue" />
@@ -28,6 +26,7 @@ import Draggable from "vuedraggable";
 import Issue from "./issue.component";
 import Dropdown from "./dropdown.component";
 import DropdownMixin from "../mixins/dropdown.mixin";
+import AddIssue from "./add-issue.component";
 
 export default {
     props: ["category"],
@@ -35,7 +34,8 @@ export default {
         Issue,
         Draggable,
         Dropdown,
-        Icon
+        Icon,
+        AddIssue
     },
     mixins: [DropdownMixin],
     data() {
@@ -43,7 +43,7 @@ export default {
             dropdownItems: [
                 { text: "Add new issue", callback: this.showAddIssue }
             ],
-            addIssue: false
+            addIssue: true
         };
     },
     methods: {
