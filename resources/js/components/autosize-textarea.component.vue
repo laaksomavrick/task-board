@@ -1,11 +1,11 @@
 <template>
-    <textarea v-bind:value="value" v-on:input="handleInput"></textarea>
+    <textarea v-bind:value="value" v-on:input="handleInput" @keydown.enter.prevent="onEnter"></textarea>
 </template>
 
 <script>
 import autosize from "autosize";
 export default {
-    props: ["value"],
+    props: ["value", "onEnter"],
     mounted() {
         autosize(this.$el);
     },

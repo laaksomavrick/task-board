@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="issues">
-            <add-issue v-if="addIssue" />
+            <add-issue v-if="addIssue" :category="category" :onCancel="hideAddIssue" />
             <draggable class="draggable" v-model="issues" :options="{group: 'issue'}">
                 <div v-for="issue in issues" :key="issue.id" class="py-2">
                     <issue :issue="issue" />
@@ -50,6 +50,9 @@ export default {
         showAddIssue() {
             this.addIssue = true;
             this.closeDropdown();
+        },
+        hideAddIssue() {
+            this.addIssue = false;
         }
     },
     computed: {

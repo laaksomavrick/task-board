@@ -37,6 +37,11 @@ const actions = {
     deleteProject: async ({ commit }, id) => {
         await axios.delete(`/api/projects/${id}`);
         commit("deleteProject", id);
+    },
+    addIssue: async ({ commit }, payload) => {
+        const response = await axios.post("/api/issues", payload);
+        const json = await response.json();
+        commit("addIssue", json);
     }
 };
 
@@ -58,6 +63,9 @@ const mutations = {
             categories: updatedCategories
         };
         state.selectedProject = updatedSelectedProject;
+    },
+    addIssue(state, issue) {
+        state.selectedProject.issues = [...state.selectedProject.issues, issue];
     }
 };
 
