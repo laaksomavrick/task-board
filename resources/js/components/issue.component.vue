@@ -3,7 +3,7 @@
         <div class="name mb-2">
             {{ name }}
         </div>
-        <div class="tag py-1 px-2 rounded font-semibold" :class="tagBackground">
+        <div v-if="tag" class="tag py-1 px-2 rounded font-semibold" :class="tagBackground">
             {{ tag }}
         </div>
     </card>
@@ -22,7 +22,7 @@ export default {
             return this.issue.name;
         },
         tag() {
-            return this.issue.tag.name;
+            return this.issue.tag ? this.issue.tag.name : null;
         },
         tagBackground() {
             return getClassForColour(this.issue.tag.colour);

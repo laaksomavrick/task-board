@@ -16,12 +16,12 @@ class CreateIssuesTable extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('owner_user_id')->index();
-            $table->unsignedInteger('assignee_user_id')->index();
+            $table->unsignedInteger('assignee_user_id')->nullable()->index();
             $table->unsignedInteger('project_id')->index();
             $table->unsignedInteger('project_category_id')->index();
-            $table->unsignedInteger('tag_id')->index();
+            $table->unsignedInteger('tag_id')->nullable()->index();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

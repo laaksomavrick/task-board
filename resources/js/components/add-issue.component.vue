@@ -1,7 +1,7 @@
 <template>
     <div class="add-issue py-2">
         <card class="card p-4">
-            <autosize-textarea class="textarea" v-model="name" :onEnter="submit" />
+            <autosize-textarea class="textarea" v-model="name" :onEnter="submit" ref="textarea" />
         </card>
         <div>
             <button class="border mt-2 py-2 px-4 rounded text-grey-light" @click="submit">Add</button>
@@ -26,16 +26,23 @@ export default {
             name: ""
         };
     },
+    mounted() {
+        this.$refs.textarea.$el.focus();
+    },
     methods: {
-        async submit(e) {
-            // todo err handling
-            const payload = {
-                projectId: this.projectId,
-                projectCategoryId: this.projectCategoryId,
-                name: this.name
-            };
-            await this.addIssue(payload);
-            this.reset();
+        async submit() {
+            try {
+                const payload = {
+                    projectId: this.projectId,
+                    projectCategoryId: this.projectCategoryId,
+                    name: this.name
+                };
+                await this.addIssue(payload);
+                this.reset();
+            } catch (e) {
+                // todo: show some toast/modal
+                console.log(e);
+            }
         },
         valid() {
             return this.name !== "";

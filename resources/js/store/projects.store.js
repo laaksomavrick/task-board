@@ -39,8 +39,12 @@ const actions = {
         commit("deleteProject", id);
     },
     addIssue: async ({ commit }, payload) => {
-        const response = await axios.post("/api/issues", payload);
-        const json = await response.json();
+        const { projectId } = payload;
+        const response = await axios.post(
+            `/api/projects/${projectId}/issues`,
+            payload
+        );
+        const json = response.data;
         commit("addIssue", json);
     }
 };
@@ -65,7 +69,22 @@ const mutations = {
         state.selectedProject = updatedSelectedProject;
     },
     addIssue(state, issue) {
-        state.selectedProject.issues = [...state.selectedProject.issues, issue];
+        const { project_category_id: categoryId } = issue;
+        const category = state.selectedProject.categories.find(
+            cat => cat.id === categoryId
+        );
+        const updatedCategory = {
+            ...category,
+            issues: [...category.issues, issue]
+        };
+        const updatedCategories = state.selectedProject.categories.map(cat => {
+            return cat.id === categoryId ? updatedCategory : cat;
+        });
+        const updatedSelectedProject = {
+            ...state.selectedProject,
+            categories: updatedCategories
+        };
+        state.selectedProject = updatedSelectedProject;
     }
 };
 

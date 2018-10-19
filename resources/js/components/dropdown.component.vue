@@ -7,6 +7,7 @@
 </template>
 
 <script>
+// todo: better positioning using top; left
 import { mapState } from "vuex";
 import { mixin as clickaway } from "vue-clickaway";
 import uuid from "../mixins/uuid.mixin.js";

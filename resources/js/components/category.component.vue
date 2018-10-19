@@ -5,7 +5,7 @@
                 {{ category.name }}
             </h3>
             <div class="category-options" @click="handleDropdownClick">
-                <icon class="" name="ellipsis-v" :scale="1" />
+                <icon class="category-option" name="ellipsis-v" :scale="1" />
                 <dropdown :items="dropdownItems" :close="closeDropdown" ref="dropdown" />
             </div>
         </div>
@@ -43,7 +43,7 @@ export default {
             dropdownItems: [
                 { text: "Add new issue", callback: this.showAddIssue }
             ],
-            addIssue: true
+            addIssue: false
         };
     },
     methods: {
@@ -95,6 +95,15 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.category-header:hover {
+    & .category-options .category-option {
+        color: inherit;
+    }
+}
+.category-option {
+    color: transparent;
+    transition: color 100ms;
 }
 .issues {
     height: 100%;
