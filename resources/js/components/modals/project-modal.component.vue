@@ -18,7 +18,6 @@ import SaveButton from "../buttons/save-button.component";
 
 // todos
 // err handling generic component
-// color picker
 
 export default {
     components: {

@@ -23,6 +23,8 @@ Route::middleware('auth')->prefix('api')->group(function () {
     Route::patch('projects/{project}', 'ProjectsController@update');
     Route::delete('projects/{project}', 'ProjectsController@destroy');
 
+    Route::post('projects/{project}/issues', 'IssuesController@store');
+
     Route::patch('categories/{category}/issues/move', 'MoveIssuesController@update');
 
 });

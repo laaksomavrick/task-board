@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
+    protected $fillable = [
+        'owner_user_id',
+        'assignee_user_id',
+        'project_id',
+        'project_category_id',
+        'tag_id',
+        'name',
+        'description'
+    ];
+
     protected $with = [
         'tag'
     ];
