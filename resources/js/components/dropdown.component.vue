@@ -7,6 +7,9 @@
 </template>
 
 <script>
+// really need to figure out auto positioning for this
+// whenever the modal becomes visible, position it (mounted), then display it
+
 import { mapState } from "vuex";
 import { mixin as clickaway } from "vue-clickaway";
 import uuid from "../mixins/uuid.mixin.js";

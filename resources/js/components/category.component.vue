@@ -1,5 +1,5 @@
 <template>
-    <div class="category px-2">
+    <kanban-row>
         <div class="category-header">
             <h3 class="category-name">
                 {{ category.name }}
@@ -19,7 +19,7 @@
                 </div>
             </draggable>
         </div>
-    </div>
+    </kanban-row>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ import Issue from "./issue.component";
 import Dropdown from "./dropdown.component";
 import DropdownMixin from "../mixins/dropdown.mixin";
 import AddIssue from "./add-issue.component";
+import KanbanRow from "./styles/kanban-row.component";
 
 export default {
     props: ["category"],
@@ -37,7 +38,8 @@ export default {
         Draggable,
         Dropdown,
         Icon,
-        AddIssue
+        AddIssue,
+        KanbanRow
     },
     mixins: [DropdownMixin],
     data() {
@@ -75,14 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.category {
-    height: 100%;
-    display: flex;
-    flex: 0 0 300px;
-    flex-direction: column;
-    max-width: 300px;
-    width: 300px;
-}
 .category-header {
     display: flex;
 }

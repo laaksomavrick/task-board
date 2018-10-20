@@ -1,22 +1,21 @@
 <template>
-    <dotted-plus :clickHandler="toggleProjectModal" scale="2.5" />
+    <div @click="clickHandler" class="dotted-plus p-2 w-auto h-48 rounded-lg border border-grey border-dashed">
+        <icon name="plus-circle" :scale="scale" />
+    </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import DottedPlus from "./styles/dotted-plus.component";
+import Icon from "vue-awesome/components/Icon";
 export default {
+    props: ["clickHandler", "scale"],
     components: {
-        DottedPlus
-    },
-    methods: {
-        ...mapActions(["toggleProjectModal"])
+        Icon
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.create-project {
+.dotted-plus {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +24,7 @@ export default {
     transition: color 100ms;
     margin: 2px;
 }
-.create-project:hover {
+.dotted-plus:hover {
     color: #8795a1; //text-grey-light
 }
 </style>

@@ -5,6 +5,7 @@
             <router-view />
         </div>
         <project-modal />
+        <project-category-modal />
         <confirmation-modal />
     </div>
 </template>
@@ -13,12 +14,14 @@
 import { mapActions } from "vuex";
 import Navbar from "../components/navbar.component";
 import ProjectModal from "../components/modals/project-modal.component";
+import ProjectCategoryModal from "../components/modals/project-category-modal.component";
 import ConfirmationModal from "../components/modals/confirmation-modal.component";
 
 export default {
     components: {
         Navbar,
         ProjectModal,
+        ProjectCategoryModal,
         ConfirmationModal
     },
 

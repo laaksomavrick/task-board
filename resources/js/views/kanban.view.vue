@@ -5,6 +5,9 @@
             <template v-for="category in project.categories">
                 <category :category="category" :key="category.id" />
             </template>
+            <kanban-row>
+                <dotted-plus class="create-category" scale="1" :clickHandler="toggleProjectCategoryModal" />
+            </kanban-row>
         </div>
     </div>
 </template>
@@ -12,9 +15,13 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import Category from "../components/category.component";
+import KanbanRow from "../components/styles/kanban-row.component";
+import DottedPlus from "../components/styles/dotted-plus.component";
 export default {
     components: {
-        Category
+        Category,
+        KanbanRow,
+        DottedPlus
     },
 
     async mounted() {
@@ -27,7 +34,11 @@ export default {
     },
 
     methods: {
-        ...mapActions(["fetchSelectedProject", "clearSelectedProject"])
+        ...mapActions([
+            "fetchSelectedProject",
+            "clearSelectedProject",
+            "toggleProjectCategoryModal"
+        ])
     },
 
     computed: mapState({
@@ -54,5 +65,8 @@ export default {
     overflow-x: auto;
     width: 100%;
     flex: 1;
+}
+.create-category {
+    height: 25px;
 }
 </style>
