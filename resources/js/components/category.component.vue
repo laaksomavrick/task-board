@@ -40,7 +40,7 @@ export default {
         AddIssue
     },
     mixins: [DropdownMixin],
-    data () {
+    data() {
         return {
             dropdownItems: [
                 { text: "Add new issue", callback: this.showAddIssue }
@@ -49,23 +49,23 @@ export default {
         };
     },
     methods: {
-        showAddIssue () {
+        showAddIssue() {
             this.addIssue = true;
             this.closeDropdown();
         },
-        hideAddIssue () {
+        hideAddIssue() {
             this.addIssue = false;
         }
     },
     computed: {
-        id () {
+        id() {
             return this.category ? this.category.id : null;
         },
         issues: {
-            get () {
+            get() {
                 return this.$store.getters.categoryIssues(this.id);
             },
-            set (value) {
+            set(value) {
                 const payload = { categoryId: this.id, issues: value };
                 this.$store.dispatch("updateProjectCategoryIssues", payload);
             }
@@ -76,38 +76,41 @@ export default {
 
 <style lang="scss" scoped>
 .category {
-  height: 100%;
-  display: flex;
-  flex: 0 0 300px;
-  flex-direction: column;
-  max-width: 300px;
-  width: 300px;
+    height: 100%;
+    display: flex;
+    flex: 0 0 300px;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
 }
 .category-header {
-  display: flex;
+    display: flex;
 }
 .category-name {
-  flex: 1;
+    flex: 1;
 }
 .category-options {
-  margin-left: auto;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-left: auto;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .category-header:hover {
-  & .category-options .category-option {
-    color: inherit;
-  }
+    & .category-options .category-option {
+        color: inherit;
+    }
 }
 .category-option {
-  color: transparent;
-  transition: color 100ms;
+    color: transparent;
+    transition: color 100ms;
 }
 .issues {
-  height: 100%;
+    height: 100%;
+}
+.draggable {
+    min-height: 100px;
 }
 </style>
