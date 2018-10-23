@@ -22,3 +22,4 @@
 
 
 // todo: refactor front end to use bootstrap over tailwind; getting tired of hand rolling basic ui components
+// todo: k8s deploy + containerize services
