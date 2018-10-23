@@ -19,3 +19,6 @@
 -   [ ] Php linting
 -   [x] Javascript linting
 -   [ ] Theme / ui final touches
+
+
+// todo: refactor front end to use bootstrap over tailwind; getting tired of hand rolling basic ui components
