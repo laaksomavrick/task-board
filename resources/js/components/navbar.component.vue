@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar-container container mx-auto py-4">
+    <div class="w-full mx-auto py-4">
         <user-circle class="member-circle mr-2" :user="user" />
     </div>
 </template>
@@ -24,9 +24,9 @@ export default {
 
 <style lang="scss">
 @import "~@/app.scss";
-.navbar-container {
-    max-width: $max-width !important;
-}
+// .navbar-container {
+//     max-width: $max-width !important;
+// }
 .member-circle {
     margin-left: auto;
     cursor: pointer;

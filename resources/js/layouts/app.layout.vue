@@ -1,7 +1,7 @@
 <template>
-    <div class="h-full flex flex-col">
+    <div class="h-full flex flex-col w-full">
         <navbar></navbar>
-        <div class="router-container container mx-auto flex-1">
+        <div class="flex-1">
             <router-view />
         </div>
         <project-modal />
@@ -47,7 +47,7 @@ body {
 #app {
     height: 100%;
 }
-.router-container {
-    max-width: $max-width !important;
-}
+// .router-container {
+//     max-width: $max-width !important;
+// }
 </style>

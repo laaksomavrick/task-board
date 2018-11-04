@@ -35,10 +35,17 @@ export default {
 @import "~@/app.scss";
 .projects {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 0em;
     align-items: center;
 }
+
+@media only screen and (max-width: $lg) {
+    .projects {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 @media only screen and (max-width: $md) {
     .projects {
         grid-template-columns: 1fr 1fr;

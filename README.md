@@ -19,3 +19,5 @@
 -   [ ] Php linting
 -   [x] Javascript linting
 -   [ ] Theme / ui final touches
+
+needs serialization layer for model > json resp for models and their associated callees
