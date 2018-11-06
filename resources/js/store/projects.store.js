@@ -10,6 +10,14 @@ const actions = {
         const json = response.data;
         commit("createProject", json);
     },
+    createProjectCategory: async ({ commit }, payload) => {
+        const response = await axios.post(
+            `/api/projects/${payload.projectId}/categories`,
+            payload
+        );
+        const json = response.data;
+        commit("createProjectCategory", json);
+    },
     updateProject: async ({ commit }, payload) => {
         const response = await axios.patch(
             `api/projects/${payload.id}`,
@@ -85,6 +93,12 @@ const mutations = {
             categories: updatedCategories
         };
         state.selectedProject = updatedSelectedProject;
+    },
+    createProjectCategory(state, category) {
+        state.selectedProject.categories = [
+            ...state.selectedProject.categories,
+            category
+        ];
     }
 };
 

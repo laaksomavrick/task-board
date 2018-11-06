@@ -25,6 +25,8 @@ Route::middleware('auth')->prefix('api')->group(function () {
 
     Route::post('projects/{project}/issues', 'IssuesController@store');
 
+    Route::post('projects/{project}/categories', 'ProjectCategoriesController@store');
+
     Route::patch('categories/{category}/issues/move', 'MoveIssuesController@update');
 
 });

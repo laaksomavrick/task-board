@@ -9,6 +9,8 @@ class ProjectCategory extends Model
     // todo: enforce that a project always has at least one category?
     // todo: nameless categories if so?
 
+    protected $fillable = ['name', 'project_id'];
+
     public function project()
     {
         return $this->belongsTo('App\Project');

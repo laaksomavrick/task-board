@@ -21,10 +21,12 @@ class IssuesController extends Controller
             'projectCategoryId' => 'required'
         ]);
 
+        ['name' => $name, 'projectId' => $projectId, 'projectCategoryId' => $projectCategoryId] = $request;
+
         $issue = Issue::create([
-            'name' => $request['name'],
-            'project_id' => $request['projectId'],
-            'project_category_id' => $request['projectCategoryId'],
+            'name' => $name,
+            'project_id' => $projectId,
+            'project_category_id' => $projectCategoryId,
             'owner_user_id' => auth()->user()->id
         ]);
 

@@ -18,34 +18,32 @@ import ProjectCategoryModal from "../components/modals/project-category-modal.co
 import ConfirmationModal from "../components/modals/confirmation-modal.component";
 
 export default {
-    components: {
-        Navbar,
-        ProjectModal,
-        ProjectCategoryModal,
-        ConfirmationModal
-    },
+  components: {
+    Navbar,
+    ProjectModal,
+    ProjectCategoryModal,
+    ConfirmationModal
+  },
 
-    mounted: async function() {
-        await this.startup();
-    },
-    methods: {
-        ...mapActions(["startup"])
-    }
+  mounted: async function() {
+    await this.startup();
+  },
+  methods: {
+    ...mapActions(["startup"])
+  }
 };
 </script>
 
 <style lang="scss">
 @import "~@/app.scss";
 body {
-    background: $background;
-    color: $text-color;
-    height: 100vh;
-    margin-left: 15px !important;
-    margin-right: 15px !important;
-    overflow-y: overlay;
+  background: $background;
+  color: $text-color;
+  height: 100vh;
+  overflow-y: overlay;
 }
 #app {
-    height: 100%;
+  height: 100%;
 }
 // .router-container {
 //     max-width: $max-width !important;
