@@ -4,10 +4,11 @@
             <h3 class="category-name">
                 {{ category.name }}
             </h3>
-            <div class="category-options" @click="handleDropdownClick">
-                <icon class="category-option" name="ellipsis-v" :scale="1" />
-                <div>
-                    <dropdown :items="dropdownItems" :close="closeDropdown" ref="dropdown" />
+            <div class="category-options">
+                <div class="category-option">
+                    <dropdown :items="dropdownItems">
+                        <icon class="category-option" name="ellipsis-v" :scale="1" />
+                    </dropdown>
                 </div>
             </div>
         </div>
@@ -23,41 +24,36 @@
 </template>
 
 <script>
-import Icon from "vue-awesome/components/Icon";
-import Draggable from "vuedraggable";
-import Issue from "./issue.component";
-import Dropdown from "./dropdown.component";
-import DropdownMixin from "../mixins/dropdown.mixin";
-import AddIssue from "./add-issue.component";
-import KanbanRow from "./styles/kanban-row.component";
+import Icon from 'vue-awesome/components/Icon';
+import Draggable from 'vuedraggable';
+import Issue from './issue.component';
+import Dropdown from './dropdown.component';
+import AddIssue from './add-issue.component';
+import KanbanRow from './styles/kanban-row.component';
 
 export default {
-    props: ["category"],
+    props: ['category'],
     components: {
         Issue,
         Draggable,
         Dropdown,
         Icon,
         AddIssue,
-        KanbanRow
+        KanbanRow,
     },
-    mixins: [DropdownMixin],
     data() {
         return {
-            dropdownItems: [
-                { text: "Add new issue", callback: this.showAddIssue }
-            ],
-            addIssue: false
+            dropdownItems: [{ text: 'Add new issue', callback: this.showAddIssue }],
+            addIssue: false,
         };
     },
     methods: {
         showAddIssue() {
             this.addIssue = true;
-            this.closeDropdown();
         },
         hideAddIssue() {
             this.addIssue = false;
-        }
+        },
     },
     computed: {
         id() {
@@ -69,10 +65,10 @@ export default {
             },
             set(value) {
                 const payload = { categoryId: this.id, issues: value };
-                this.$store.dispatch("updateProjectCategoryIssues", payload);
-            }
-        }
-    }
+                this.$store.dispatch('updateProjectCategoryIssues', payload);
+            },
+        },
+    },
 };
 </script>
 

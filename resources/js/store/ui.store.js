@@ -11,22 +11,18 @@ const state = {
     projectCategoryModal: {
         visible: false,
         projectCategory: null
-    },
-    dropdown: null
+    }
 };
 
 const actions = {
     toggleConfirmationModal: ({ commit }, confirmationData) => {
-        commit("toggleConfirmationModal", confirmationData);
+        commit('toggleConfirmationModal', confirmationData);
     },
     toggleProjectModal: ({ commit }, projectData) => {
-        commit("toggleProjectModal", projectData);
+        commit('toggleProjectModal', projectData);
     },
     toggleProjectCategoryModal: ({ commit }, projectCategoryData) => {
-        commit("toggleProjectCategoryModal", projectCategoryData);
-    },
-    toggleDropdown: ({ commit }, id) => {
-        commit("toggleDropdown", id);
+        commit('toggleProjectCategoryModal', projectCategoryData);
     }
 };
 
@@ -53,21 +49,12 @@ const mutations = {
     },
     toggleProjectCategoryModal(state, projectCategoryData) {
         if (projectCategoryData) {
-            state.projectCategoryModal.projectCategory =
-                projectCategoryData.projectCategory;
+            state.projectCategoryModal.projectCategory = projectCategoryData.projectCategory;
         } else {
             state.projectCategoryModal.projectCategory = null;
         }
 
-        state.projectCategoryModal.visible = !state.projectCategoryModal
-            .visible;
-    },
-    toggleDropdown(state, id) {
-        if (id) {
-            state.dropdown = id;
-        } else {
-            state.dropdown = null;
-        }
+        state.projectCategoryModal.visible = !state.projectCategoryModal.visible;
     }
 };
 

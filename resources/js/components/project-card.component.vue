@@ -5,91 +5,78 @@
                 <div class="project-title text-2xl font-semibold">
                     {{ project.name }}
                 </div>
-                <!-- <div class="project-member-circles">
-                    <user-circle v-for="user in project.users" :key="user.user_id" :user="user"></user-circle>
-                </div> -->
             </div>
             <div class="project-options">
-                <div class="project-option" @click="handleDropdownClick">
-                    <icon name="ellipsis-v" :scale="1.25" />
+                <div class="project-option">
+                    <dropdown :items="dropdownItems">
+                        <icon name="ellipsis-v" :scale="1.25"/>
+                    </dropdown>
                 </div>
-                <dropdown :items="dropdownItems" :close="closeDropdown" ref="dropdown" />
             </div>
         </div>
     </card>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import Icon from "vue-awesome/components/Icon";
-import Card from "../components/card.component";
-import UserCircle from "../components/user-circle.component";
-import Dropdown from "../components/dropdown.component";
-import { getClassForColour } from "../utils/colourable.utils";
-import DropdownMixin from "../mixins/dropdown.mixin";
+import { mapActions } from 'vuex';
+import Icon from 'vue-awesome/components/Icon';
+import Card from '../components/card.component';
+import UserCircle from '../components/user-circle.component';
+import Dropdown from '../components/dropdown.component';
+import { getClassForColour } from '../utils/colourable.utils';
 
 export default {
-    props: ["project"],
+    props: ['project'],
     components: {
         Card,
         UserCircle,
         Icon,
-        Dropdown
+        Dropdown,
     },
-    mixins: [DropdownMixin],
     data() {
         return {
             dropdownItems: [
-                { text: "Edit", callback: this.handleEditClick },
-                { text: "Delete", callback: this.handleDeleteClick }
-            ]
+                { text: 'Edit', callback: this.handleEditClick },
+                { text: 'Delete', callback: this.handleDeleteClick },
+            ],
         };
     },
     methods: {
         handleProjectClick(project) {
             const { id } = project;
-            this.$router.push({ name: "kanban", params: { id } });
+            this.$router.push({ name: 'kanban', params: { id } });
         },
         handleEditClick() {
             const projectData = {
-                project: this.project
+                project: this.project,
             };
-            this.closeDropdown();
             this.toggleProjectModal(projectData);
         },
         handleDeleteClick(e) {
             const confirmationData = {
-                message: `Are you sure you want to delete ${
-                    this.project.name
-                }?`,
+                message: `Are you sure you want to delete ${this.project.name}?`,
                 callback: async () => {
                     await this.deleteProject(this.project.id);
-                }
+                },
             };
-            this.closeDropdown();
             this.toggleConfirmationModal(confirmationData);
         },
-        ...mapActions([
-            "toggleConfirmationModal",
-            "toggleProjectModal",
-            "deleteProject"
-        ])
+        ...mapActions(['toggleConfirmationModal', 'toggleProjectModal', 'deleteProject']),
     },
     computed: {
         backgroundColour() {
             return getClassForColour(this.project.colour);
-        }
-    }
+        },
+    },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "~@/app.scss";
+@import '~@/app.scss';
 .project-card {
     display: flex;
     flex-direction: column;
-    transition: border 100ms, border-color 100ms, transform 100ms,
-        box-shadow 100ms, color 100ms;
+    transition: border 100ms, border-color 100ms, transform 100ms, box-shadow 100ms, color 100ms;
     cursor: pointer;
     color: white;
     margin: 2px;
