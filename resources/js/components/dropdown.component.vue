@@ -1,6 +1,6 @@
 <template>
-  <div class="dropdown">
-    <div class="dropdown-button mx-4 my-2" @click="toggle">
+  <div class="dropdown" @click="toggle">
+    <div class="dropdown-button mx-4 my-2">
       <!-- needs options for left, right, center, etc -->
       <slot></slot>
     </div>
@@ -26,14 +26,14 @@ export default {
     props: ['items'],
     components: {
         Card,
-        Icon,
+        Icon
     },
     data() {
         return {
             visible: false,
             top: undefined,
             left: undefined,
-            align: 'bottom',
+            align: 'bottom'
         };
     },
     mixins: [clickaway, uuid],
@@ -44,7 +44,7 @@ export default {
                     this.position();
                 });
             }
-        },
+        }
     },
     methods: {
         click(e, callback) {
@@ -65,7 +65,7 @@ export default {
 
             const coords = {
                 top: btnRect.top - pageYOffset,
-                left: btnRect.left - pageXOffset,
+                left: btnRect.left - pageXOffset
             };
 
             const currentTop = coords.top;
@@ -99,8 +99,8 @@ export default {
                     this.left = currentLeft + pageXOffset;
                     break;
             }
-        },
-    },
+        }
+    }
     // computed: mapState({
     //   visible(state) {
     //     return state.ui.dropdown === this.uuid;

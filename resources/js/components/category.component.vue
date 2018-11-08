@@ -7,7 +7,7 @@
             <div class="category-options">
                 <div class="category-option">
                     <dropdown :items="dropdownItems">
-                        <icon class="category-option" name="ellipsis-v" :scale="1" />
+                        <icon name="ellipsis-v" :scale="1" />
                     </dropdown>
                 </div>
             </div>
@@ -39,12 +39,12 @@ export default {
         Dropdown,
         Icon,
         AddIssue,
-        KanbanRow,
+        KanbanRow
     },
     data() {
         return {
             dropdownItems: [{ text: 'Add new issue', callback: this.showAddIssue }],
-            addIssue: false,
+            addIssue: false
         };
     },
     methods: {
@@ -53,7 +53,7 @@ export default {
         },
         hideAddIssue() {
             this.addIssue = false;
-        },
+        }
     },
     computed: {
         id() {
@@ -66,9 +66,9 @@ export default {
             set(value) {
                 const payload = { categoryId: this.id, issues: value };
                 this.$store.dispatch('updateProjectCategoryIssues', payload);
-            },
-        },
-    },
+            }
+        }
+    }
 };
 </script>
 

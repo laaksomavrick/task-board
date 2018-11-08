@@ -11,6 +11,10 @@ const state = {
     projectCategoryModal: {
         visible: false,
         projectCategory: null
+    },
+    issueDetailsModal: {
+        visible: false,
+        issue: null
     }
 };
 
@@ -23,6 +27,9 @@ const actions = {
     },
     toggleProjectCategoryModal: ({ commit }, projectCategoryData) => {
         commit('toggleProjectCategoryModal', projectCategoryData);
+    },
+    toggleIssueDetailsModal: ({ commit }, issueData) => {
+        commit('toggleIssueDetailsModal', issueData);
     }
 };
 
@@ -55,6 +62,15 @@ const mutations = {
         }
 
         state.projectCategoryModal.visible = !state.projectCategoryModal.visible;
+    },
+    toggleIssueDetailsModal(state, issueData) {
+        if (issueData) {
+            state.issueDetailsModal.issue = issueData.issue;
+        } else {
+            state.issueDetailsModal.issue = null;
+        }
+
+        state.issueDetailsModal.visible = !state.issueDetailsModal.visible;
     }
 };
 

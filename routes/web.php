@@ -24,6 +24,7 @@ Route::middleware('auth')->prefix('api')->group(function () {
     Route::delete('projects/{project}', 'ProjectsController@destroy');
 
     Route::post('projects/{project}/issues', 'IssuesController@store');
+    Route::patch('projects/{project}/issues/{issue}', 'IssuesController@update');
 
     Route::post('projects/{project}/categories', 'ProjectCategoriesController@store');
 

@@ -1,5 +1,5 @@
 <template>
-    <card class="issue p-4">
+    <card class="issue p-4" @click.native="openIssueDetailsModal">
         <div class="name mb-2">
             {{ name }}
         </div>
@@ -10,12 +10,22 @@
 </template>
 
 <script>
-import Card from "./card.component";
-import { getClassForColour } from "../utils/colourable.utils";
+import Card from './card.component';
+import { getClassForColour } from '../utils/colourable.utils';
+import { mapActions } from 'vuex';
 export default {
-    props: ["issue"],
+    props: ['issue'],
     components: {
         Card
+    },
+    methods: {
+        openIssueDetailsModal() {
+            const data = {
+                issue: this.issue
+            };
+            this.toggleIssueDetailsModal(data);
+        },
+        ...mapActions(['toggleIssueDetailsModal'])
     },
     computed: {
         name() {

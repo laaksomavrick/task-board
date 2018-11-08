@@ -38,9 +38,24 @@ class IssuesController extends Controller
         //
     }
 
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Project $project, Issue $issue)
     {
-        //
+        $this->authorize('update', [Issue::class, $project]);
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'present'
+        ]);
+
+        ['name' => $name, 'description' => $description] = $request;
+
+        $issue->update([
+            'name' => $name,
+            'description' => $description
+        ]);
+
+        return $issue;
+
     }
     public function destroy(Team $team)
     {

@@ -21,22 +21,22 @@ class IssuePolicy
         return $user->team->id === $project->team->id;
     }
 
-    public function update(User $user, Issue $issue)
+    public function update(User $user, Project $project)
     {
-        return $user->team->id === $issue->team->id;
+        return $user->team->id === $project->team->id;
     }
 
-    public function delete(User $user, Issue $issue)
+    public function delete(User $user, Project $project)
     {
-        return $user->team->id === $issue->team->id;
+        return $user->team->id === $project->team->id;
     }
 
-    public function restore(User $user, Issue $issue)
+    public function restore(User $user, Project $project)
     {
-        return $user->team->id === $issue->team->id;
+        return $user->team->id === $project->team->id;
     }
 
-    public function forceDelete(User $user, Issue $issue)
+    public function forceDelete(User $user, Project $project)
     {
         return false;
     }

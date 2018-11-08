@@ -8,90 +8,85 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import Modal from "./modal.component";
-import FormInput from "../forms/form-input.component";
-import SaveButton from "../buttons/save-button.component";
+import { mapState, mapActions } from 'vuex';
+import Modal from './modal.component';
+import FormInput from '../forms/form-input.component';
+import SaveButton from '../buttons/save-button.component';
 
 export default {
-  components: {
-    Modal,
-    FormInput,
-    SaveButton
-  },
-  data() {
-    return {
-      name: "",
-      working: false
-    };
-  },
-  watch: {
-    projectCategory(newVal) {
-      if (newVal) {
-        this.name = newVal.name;
-      } else {
-        this.name = "";
-      }
-    }
-  },
-  computed: mapState({
-    projectCategoryModalVisible(state) {
-      return state.ui.projectCategoryModal.visible;
+    components: {
+        Modal,
+        FormInput,
+        SaveButton
     },
-    projectCategory(state) {
-      return state.ui.projectCategoryModal.projectCategory;
-    },
-    valid() {
-      return this.name !== "";
-    },
-    buttonText() {
-      return this.working ? "Saving..." : "Save";
-    }
-  }),
-  methods: {
-    ...mapActions([
-      "toggleProjectCategoryModal",
-      "createProjectCategory",
-      "updateProjectCategory"
-    ]),
-
-    async save() {
-      try {
-        if (!this.valid) return;
-        this.working = true;
-        console.log(this.$route);
-        const payload = {
-          name: this.name,
-          projectId: this.$route.params.id
+    data() {
+        return {
+            name: '',
+            working: false
         };
-        await this.action(payload);
-        this.toggleProjectCategoryModal();
-      } catch (e) {
-        console.error(e);
-      } finally {
-        this.working = false;
-      }
     },
+    watch: {
+        projectCategory(newVal) {
+            if (newVal) {
+                this.name = newVal.name;
+            } else {
+                this.name = '';
+            }
+        }
+    },
+    computed: mapState({
+        projectCategoryModalVisible(state) {
+            return state.ui.projectCategoryModal.visible;
+        },
+        projectCategory(state) {
+            return state.ui.projectCategoryModal.projectCategory;
+        },
+        valid() {
+            return this.name !== '';
+        },
+        buttonText() {
+            return this.working ? 'Saving...' : 'Save';
+        }
+    }),
+    methods: {
+        ...mapActions(['toggleProjectCategoryModal', 'createProjectCategory', 'updateProjectCategory']),
 
-    action(payload) {
-      return this.project
-        ? this.updateProjectCategory({
-            ...payload,
-            id: this.projectCategory.id
-          })
-        : this.createProjectCategory(payload);
+        async save() {
+            try {
+                if (!this.valid) return;
+                this.working = true;
+                const payload = {
+                    name: this.name,
+                    projectId: this.$route.params.id
+                };
+                await this.action(payload);
+                this.toggleProjectCategoryModal();
+            } catch (e) {
+                console.error(e);
+            } finally {
+                this.working = false;
+            }
+        },
+
+        action(payload) {
+            return this.project
+                ? this.updateProjectCategory({
+                      ...payload,
+                      id: this.projectCategory.id
+                  })
+                : this.createProjectCategory(payload);
+        }
     }
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "~@/app.scss";
+@import '~@/app.scss';
 .project-category-modal {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .actions {
-  display: flex;
+    display: flex;
 }
 </style>
