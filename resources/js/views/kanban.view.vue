@@ -1,6 +1,6 @@
 <template>
     <div class="kanban">
-        <h1 class="m-2">{{ project.name }}</h1>
+        <h1 class="m-2 px-2">{{ project.name }}</h1>
         <div class="categories pt-4">
             <template v-for="category in project.categories">
                 <category :category="category" :key="category.id" />

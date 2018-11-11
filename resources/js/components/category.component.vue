@@ -24,6 +24,7 @@
 </template>
 
 <script>
+// todo: dragging card within same cat doesn't change order - need to add ordinals
 import Icon from 'vue-awesome/components/Icon';
 import Draggable from 'vuedraggable';
 import Issue from './issue.component';
