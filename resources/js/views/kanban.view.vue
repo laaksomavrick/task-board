@@ -6,17 +6,18 @@
                 <category :category="category" :key="category.id" />
             </template>
             <kanban-row>
-                <dotted-plus class="create-category" scale="1" :clickHandler="toggleProjectCategoryModal" />
+                <!-- <dotted-plus class="create-category" scale="1" :clickHandler="toggleProjectCategoryModal" /> -->
+                <h3 class="text-grey create-category" @click="toggleProjectCategoryModal">+ Add Column</h3>
             </kanban-row>
         </div>
     </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import Category from "../components/category.component";
-import KanbanRow from "../components/styles/kanban-row.component";
-import DottedPlus from "../components/styles/dotted-plus.component";
+import { mapState, mapActions } from 'vuex';
+import Category from '../components/category.component';
+import KanbanRow from '../components/styles/kanban-row.component';
+import DottedPlus from '../components/styles/dotted-plus.component';
 export default {
     components: {
         Category,
@@ -34,11 +35,7 @@ export default {
     },
 
     methods: {
-        ...mapActions([
-            "fetchSelectedProject",
-            "clearSelectedProject",
-            "toggleProjectCategoryModal"
-        ])
+        ...mapActions(['fetchSelectedProject', 'clearSelectedProject', 'toggleProjectCategoryModal'])
     },
 
     computed: mapState({
@@ -67,6 +64,11 @@ export default {
     flex: 1;
 }
 .create-category {
-    height: 25px;
+    cursor: pointer;
+    transition: color 100ms;
+
+    &:hover {
+        color: #606f7b;
+    }
 }
 </style>

@@ -49,6 +49,7 @@ export default {
     methods: {
         click(e, callback) {
             e.stopPropagation();
+            this.close();
             callback();
         },
         toggle(e) {
