@@ -13,6 +13,8 @@ class IssuesController extends Controller
     public function store(Request $request, Project $project)
     {
 
+        // todo: refactor, getting fat
+
         $this->authorize('create', [Issue::class, $project]);
 
         $request->validate([
@@ -23,12 +25,16 @@ class IssuesController extends Controller
 
         ['name' => $name, 'projectId' => $projectId, 'projectCategoryId' => $projectCategoryId] = $request;
 
+        $user = auth()->user();
+
         $issue = Issue::create([
             'name' => $name,
             'project_id' => $projectId,
             'project_category_id' => $projectCategoryId,
-            'owner_user_id' => auth()->user()->id
+            'owner_user_id' => $user->id
         ]);
+
+
 
         return $issue;
     }

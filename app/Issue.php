@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\IssueCreatedEvent;
 
 class Issue extends Model
 {
@@ -19,6 +20,15 @@ class Issue extends Model
     protected $with = [
         'tag'
     ];
+
+    public static function boot()
+    {
+        self::created(function ($issue) {
+            event(new IssueCreatedEvent($issue));
+        });
+
+        parent::boot();
+    }
 
     public function owner()
     {

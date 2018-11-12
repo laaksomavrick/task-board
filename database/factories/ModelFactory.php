@@ -80,3 +80,15 @@ $factory->define(App\Tag::class, function (Faker $faker) {
         },
     ];
 });
+
+$factory->define(\Illuminate\Notifications\DatabaseNotification::class, function ($faker) {
+    return [
+        'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+        'type' => 'App\Notifications\IssueCreatedNotification',
+        'notifiable_id' => function () {
+            return auth()->id() ? auth()->id() : factory('App\User')->create()->id;
+        },
+        'notifiable_type' => 'App\User',
+        'data' => ['foo' => 'bar']
+    ];
+});

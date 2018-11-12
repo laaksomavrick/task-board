@@ -30,6 +30,8 @@ Route::middleware('auth')->prefix('api')->group(function () {
 
     Route::patch('categories/{category}/issues/move', 'MoveIssuesController@update');
 
+    Route::get('notifications', 'NotificationsController@index');
+
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

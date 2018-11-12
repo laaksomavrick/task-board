@@ -28,6 +28,26 @@ class CreateIssueTest extends TestCase
     /**
      * @test
      */
+    public function creating_an_issue_generates_a_notification()
+    {
+        $this->signIn();
+        $teamUser = create('App\User', ['team_id' => $this->user->team->id]);
+        $project = create('App\Project', ['team_id' => $this->user->team->id]);
+        $projectCategory = create('App\ProjectCategory', ['project_id' => $project->id]);
+        $issue = $this->post("api/projects/{$project->id}/issues", [
+            'name' => 'issue name',
+            'projectId' => "{$project->id}",
+            'projectCategoryId' => "{$projectCategory->id}"
+        ]);
+        $notification = $teamUser->notifications->first();
+        $this->assertInstanceOf('Illuminate\Notifications\DatabaseNotification', $notification);
+        $this->assertTrue('App\Notifications\IssueCreatedNotification' === $notification->type);
+    }
+
+
+    /**
+     * @test
+     */
     public function a_guest_cannot_create_an_issue()
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
